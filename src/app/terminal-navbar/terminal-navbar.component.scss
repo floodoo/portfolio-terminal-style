@@ -1,0 +1,55 @@
+.terminal-window {
+    background-color: #383938;
+    width: 100%;
+    height: 4%;
+    position: absolute;
+    align-items: center;
+    display: flex;
+    padding-left: 10px;
+}
+
+.terminal-window-button {
+    position: relative;
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    margin: 0 4px;
+}
+
+
+nav {
+    background-color: #333;
+    position: fixed;
+    top: 4%;
+    right: 0;
+    left: 0;
+
+}
+
+nav ul {
+    list-style-type: none;
+    overflow: hidden;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    flex: 1;
+    border-right: 1.5px solid #454545;
+
+}
+
+nav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+nav a:after {
+    content: " (-FloOS)";
+}
