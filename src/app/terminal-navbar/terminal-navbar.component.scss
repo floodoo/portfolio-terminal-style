@@ -45,6 +45,14 @@ nav {
     text-decoration: none;
 }
 
-.nav-button:after {
+.nav-button-text:after {
     content: " (-FloOS)";
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
 }
