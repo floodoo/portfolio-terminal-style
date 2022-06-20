@@ -5,7 +5,7 @@
     position: absolute;
     align-items: center;
     display: flex;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .terminal-window-button {
@@ -16,21 +16,35 @@
     margin: 0 4px;
 }
 
-nav {
-    display: grid;
-    grid-gap: 0px;
-    grid-template-columns: 300px 300px 300px 300px 300px;
-    padding-top: 30px;
+.terminal-window-name {
+    color: #B4B5B4;
+    padding-left: 40%;
 }
 
-.nav-button-text {
-    background-color: #333;
+nav {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 300px 300px 300px 300px 300px;
+    padding-top: 30px;
+    background-color: #454545;
+}
+
+.nav-button {
+    background-color: #1C1C1C;
+    color: #B5B5B5;
+    padding: 10px;
+    font-size: 110%;
+    text-decoration: none;
+}
+
+.nav-button-active {
+    background-color: #383938;
     color: #fff;
     padding: 10px;
     font-size: 110%;
     text-decoration: none;
 }
 
-.nav-button-text:after {
+.nav-button:after {
     content: " (-FloOS)";
 }
