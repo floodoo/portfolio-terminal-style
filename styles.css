@@ -1,3 +1,23 @@
+html {
+    overflow: hidden;
+}
+
+body {
+    background-color: #000;
+    overflow: hidden;
+    margin: 0;
+}
+
+.terminal-text {
+    color: #C7C7C7;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.terminal-text-highlighted {
+    color: #60FA68;
+}
+
 .terminal-window {
     background-color: #383938;
     width: 100%;
