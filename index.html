@@ -27,7 +27,7 @@
     <nav>
       <a class="nav-button-active" href="#home">
         <ul>
-          <li class="nav-button-text">~ Home</li>
+          <li class="nav-button-text">~</li>
           <li>⌘1</li>
         </ul>
       </a>
@@ -77,7 +77,25 @@
             '<span class="terminal-text">development/portfolio</span>'
           )
           .start();
+
+        setTimeout(function () {
+          // set cursor color to transparent, because i can't delete it
+          document.querySelector(".Typewriter__cursor").style.backgroundColor =
+            "transparent";
+          document.getElementById("line-2").style.display = "block";
+        }, 4000);
       </script>
+      <div id="line-2" style="display: none">
+        <img
+          src="assets/images/terminal-symbol.svg"
+          alt="terminal new line symbol"
+          style="padding-right: 4px; padding-top: 15px"
+        />
+        <span class="terminal-text-highlighted">portfolio [</span>
+        <span style="color: #60fdff">main</span>
+        <span class="terminal-text-highlighted">]</span>
+        <span>⚡️</span>
+      </div>
     </div>
   </body>
 </html>
