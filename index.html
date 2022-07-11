@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <title>Florian Schmitz</title>
   </head>
 
@@ -62,8 +63,21 @@
         alt="terminal new line symbol"
         style="padding-right: 4px"
       />
-      <span class="terminal-text-highlighted">~ cd</span>
-      <span class="terminal-text">development/portfolio</span>
+      <span class="terminal-text-highlighted">~ </span>
+      <span id="typewriter"></span>
+      <script type="text/javascript">
+        const typewriter = new Typewriter("#typewriter", {
+          loop: false,
+          delay: 100,
+        });
+
+        typewriter
+          .typeString('<span class="terminal-text-highlighted">cd </span>')
+          .typeString(
+            '<span class="terminal-text">development/portfolio</span>'
+          )
+          .start();
+      </script>
     </div>
   </body>
 </html>
