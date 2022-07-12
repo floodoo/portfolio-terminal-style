@@ -81,7 +81,13 @@
     </script>
     <!-- End of Navbar -->
     <div style="padding-left: 15px">
-      <div class="terminal-text">Last login: Sun May 1 11:53:40 on ttys000</div>
+      <div class="terminal-text" id="last-login"></div>
+      <script>
+        document.getElementById(
+          "last-login"
+        ).innerHTML = `Last login: ${new Date().toLocaleString()} on ttys000`;
+      </script>
+
       <img
         src="assets/images/terminal-symbol.svg"
         alt="terminal new line symbol"
