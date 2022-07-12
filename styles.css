@@ -1,6 +1,9 @@
 html {
     overflow: hidden;
     font-family: monospace;
+    min-width:900px;
+    width: auto !important;
+    width:900px;
 }
 
 body {
@@ -22,6 +25,7 @@ body {
 .terminal-window {
     background-color: #383938;
     width: 100%;
+    min-width:900px;
     height: 30px;
     position: absolute;
     align-items: center;
