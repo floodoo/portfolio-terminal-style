@@ -26,37 +26,59 @@
       <div class="terminal-window-name">florianschmitz@MacBook-Pro:~</div>
     </div>
     <nav>
-      <a class="nav-button-active" href="index.html">
+      <a class="nav-button" data-hotkey="Meta+1" href="index.html">
         <ul>
           <li class="nav-button-text">~</li>
           <li>⌘1</li>
         </ul>
       </a>
-      <a class="nav-button" href="about.html">
+      <a class="nav-button" data-hotkey="Meta+2" href="about.html">
         <ul>
           <li class="nav-button-text">About</li>
           <li>⌘2</li>
         </ul>
       </a>
-      <a class="nav-button" href="projects.html">
+      <a class="nav-button-active" data-hotkey="Meta+3" href="projects.html">
         <ul>
           <li class="nav-button-text">Projects</li>
           <li>⌘3</li>
         </ul>
       </a>
-      <a class="nav-button" href="blog.html">
+      <a class="nav-button" data-hotkey="Meta+4" href="blog.html">
         <ul>
           <li class="nav-button-text">Blog</li>
           <li>⌘4</li>
         </ul>
       </a>
-      <a class="nav-button" href="contact.html">
+      <a class="nav-button" data-hotkey="Meta+5" href="contact.html">
         <ul>
           <li class="nav-button-text">Contact</li>
           <li>⌘5</li>
         </ul>
       </a>
     </nav>
+    <script>
+      document.addEventListener("keydown", (keyboardEvent) => {
+        [...document.querySelectorAll(`[data-hotkey]`)].forEach((elem) => {
+          const combineKey = elem.dataset.hotkey.split("+");
+
+          for (let myKeyStr of combineKey) {
+            myKeyStr = myKeyStr.toUpperCase();
+
+            if (myKeyStr.length > 1) {
+              if (myKeyStr === "META" && keyboardEvent.metaKey) {
+                continue;
+              }
+            }
+            if (keyboardEvent.key.toUpperCase() !== myKeyStr) {
+              return;
+            }
+          }
+          keyboardEvent.preventDefault();
+          elem.click();
+        });
+      });
+    </script>
     <!-- End of navbar -->
     <div style="padding-left: 15px">
       <div class="terminal-text">Last login: Sun May 1 11:53:40 on ttys000</div>
