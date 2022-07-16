@@ -1,144 +1,127 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
-    <title>Florian Schmitz</title>
-  </head>
 
-  <body>
-    <!-- Navbar -->
-    <div class="terminal-window">
-      <div
-        class="terminal-window-button"
-        style="background-color: #ff5f57"
-      ></div>
-      <div
-        class="terminal-window-button"
-        style="background-color: #febc30"
-      ></div>
-      <div
-        class="terminal-window-button"
-        style="background-color: #2bc840"
-      ></div>
-      <div class="terminal-window-name">florianschmitz@MacBook-Pro:~</div>
-    </div>
-    <nav>
-      <a class="nav-button" data-hotkey="Meta+1" href="index.html">
-        <ul>
-          <li class="nav-button-text">~</li>
-          <li>⌘1</li>
-        </ul>
-      </a>
-      <a class="nav-button" data-hotkey="Meta+2" href="about.html">
-        <ul>
-          <li class="nav-button-text">About</li>
-          <li>⌘2</li>
-        </ul>
-      </a>
-      <a class="nav-button" data-hotkey="Meta+3" href="projects.html">
-        <ul>
-          <li class="nav-button-text">Projects</li>
-          <li>⌘3</li>
-        </ul>
-      </a>
-      <a class="nav-button" data-hotkey="Meta+4" href="blog.html">
-        <ul>
-          <li class="nav-button-text">Blog</li>
-          <li>⌘4</li>
-        </ul>
-      </a>
-      <a class="nav-button-active" data-hotkey="Meta+5" href="contact.html">
-        <ul>
-          <li class="nav-button-text">Contact</li>
-          <li>⌘5</li>
-        </ul>
-      </a>
-    </nav>
-    <script>
-      document.addEventListener("keydown", (keyboardEvent) => {
-        [...document.querySelectorAll(`[data-hotkey]`)].forEach((elem) => {
-          const combineKey = elem.dataset.hotkey.split("+");
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+  <title>Florian Schmitz</title>
+</head>
 
-          for (let myKeyStr of combineKey) {
-            myKeyStr = myKeyStr.toUpperCase();
+<body>
+  <!-- Navbar -->
+  <div class="terminal-window">
+    <div class="terminal-window-button" style="background-color: #ff5f57"></div>
+    <div class="terminal-window-button" style="background-color: #febc30"></div>
+    <div class="terminal-window-button" style="background-color: #2bc840"></div>
+    <div class="terminal-window-name">florianschmitz@MacBook-Pro:~</div>
+  </div>
+  <nav>
+    <a class="nav-button" data-hotkey="Meta+1" href="index.html">
+      <ul>
+        <li class="nav-button-text">~</li>
+        <li>⌘1</li>
+      </ul>
+    </a>
+    <a class="nav-button" data-hotkey="Meta+2" href="about.html">
+      <ul>
+        <li class="nav-button-text">About</li>
+        <li>⌘2</li>
+      </ul>
+    </a>
+    <a class="nav-button" data-hotkey="Meta+3" href="projects.html">
+      <ul>
+        <li class="nav-button-text">Projects</li>
+        <li>⌘3</li>
+      </ul>
+    </a>
+    <a class="nav-button" data-hotkey="Meta+4" href="blog.html">
+      <ul>
+        <li class="nav-button-text">Blog</li>
+        <li>⌘4</li>
+      </ul>
+    </a>
+    <a class="nav-button-active" data-hotkey="Meta+5" href="contact.html">
+      <ul>
+        <li class="nav-button-text">Contact</li>
+        <li>⌘5</li>
+      </ul>
+    </a>
+  </nav>
+  <script>
+    document.addEventListener("keydown", (keyboardEvent) => {
+      [...document.querySelectorAll(`[data-hotkey]`)].forEach((elem) => {
+        const combineKey = elem.dataset.hotkey.split("+");
 
-            if (myKeyStr.length > 1) {
-              if (myKeyStr === "META" && keyboardEvent.metaKey) {
-                continue;
-              }
-            }
-            if (keyboardEvent.key.toUpperCase() !== myKeyStr) {
-              return;
+        for (let myKeyStr of combineKey) {
+          myKeyStr = myKeyStr.toUpperCase();
+
+          if (myKeyStr.length > 1) {
+            if (myKeyStr === "META" && keyboardEvent.metaKey) {
+              continue;
             }
           }
-          keyboardEvent.preventDefault();
-          elem.click();
-        });
+          if (keyboardEvent.key.toUpperCase() !== myKeyStr) {
+            return;
+          }
+        }
+        keyboardEvent.preventDefault();
+        elem.click();
       });
+    });
+  </script>
+  <!-- End of navbar -->
+  <div style="padding-left: 15px">
+    <div class="terminal-text" id="last-login"></div>
+    <script>
+      document.getElementById(
+        "last-login"
+      ).innerHTML = `Last login: ${new Date().toLocaleString()} on ttys000`;
     </script>
-    <!-- End of navbar -->
-    <div style="padding-left: 15px">
-      <div class="terminal-text" id="last-login"></div>
-      <script>
-        document.getElementById(
-          "last-login"
-        ).innerHTML = `Last login: ${new Date().toLocaleString()} on ttys000`;
-      </script>
-      <img
-        src="assets/images/terminal-symbol.svg"
-        alt="terminal new line symbol"
-        style="padding-right: 4px"
-      />
-      <span class="terminal-text-highlighted">~ </span>
-      <span class="terminal-text-highlighted">cd </span>
-      <span class="terminal-text">development/portfolio</span>
-      <div></div>
-      <img
-        src="assets/images/terminal-symbol.svg"
-        alt="terminal new line symbol"
-        style="padding-right: 4px; padding-top: 15px"
-      />
+    <img src="assets/images/terminal-symbol.svg" alt="terminal new line symbol" style="padding-right: 4px" />
+    <span class="terminal-text-highlighted">~ </span>
+    <span class="terminal-text-highlighted">cd </span>
+    <span class="terminal-text">development/portfolio</span>
+    <div></div>
+    <img src="assets/images/terminal-symbol.svg" alt="terminal new line symbol"
+      style="padding-right: 4px; padding-top: 15px" />
 
+    <span class="terminal-text-highlighted">portfolio [</span>
+    <span style="color: #60fdff">main</span>
+    <span class="terminal-text-highlighted">]</span>
+    <span>⚡️</span>
+    <span id="typewriter"></span>
+    <script type="text/javascript">
+      const typewriter = new Typewriter("#typewriter", {
+        loop: false,
+        delay: 100,
+      });
+
+      typewriter
+        .typeString('<span class="terminal-text-highlighted">make </span>')
+        .typeString('<span class="terminal-text">contact</span>')
+        .start();
+
+      setTimeout(function () {
+        // set cursor color to transparent, because i can't delete it
+        document.querySelector(".Typewriter__cursor").style.backgroundColor =
+          "transparent";
+        document.getElementById("line-2").style.display = "block";
+      }, 2000);
+    </script>
+    <div id="line-2" style="display: none">
+      <div class="terminal-text">Florian Schmitz</div>
+      <div class="terminal-text">contact@flo-dev.me</div>
+
+      <img src="assets/images/terminal-symbol.svg" alt="terminal new line symbol"
+        style="padding-right: 4px; padding-top: 15px" />
       <span class="terminal-text-highlighted">portfolio [</span>
       <span style="color: #60fdff">main</span>
       <span class="terminal-text-highlighted">]</span>
       <span>⚡️</span>
-      <span id="typewriter"></span>
-      <script type="text/javascript">
-        const typewriter = new Typewriter("#typewriter", {
-          loop: false,
-          delay: 100,
-        });
-
-        typewriter
-          .typeString('<span class="terminal-text-highlighted">make </span>')
-          .typeString('<span class="terminal-text">contact</span>')
-          .start();
-
-        setTimeout(function () {
-          // set cursor color to transparent, because i can't delete it
-          document.querySelector(".Typewriter__cursor").style.backgroundColor =
-            "transparent";
-          document.getElementById("line-2").style.display = "block";
-        }, 2000);
-      </script>
-      <div id="line-2" style="display: none">
-        <div class="terminal-text">Florian Schmitz</div>
-        <div class="terminal-text">contact@flo-dev.me</div>
-
-        <img
-          src="assets/images/terminal-symbol.svg"
-          alt="terminal new line symbol"
-          style="padding-right: 4px; padding-top: 15px"
-        />
-        <span class="terminal-text-highlighted">portfolio [</span>
-        <span style="color: #60fdff">main</span>
-        <span class="terminal-text-highlighted">]</span>
-        <span>⚡️</span>
-      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
