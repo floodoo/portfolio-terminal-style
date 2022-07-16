@@ -126,7 +126,63 @@
         }, 2000);
       </script>
       <div id="line-2" style="display: none">
-        <div class="terminal-text">Weird, there's nothing going on here...</div>
+        <p>
+          <span>Name: Florian Schmitz</span>
+
+          <br />
+          <span id="age"></span>
+          <br />
+          <span id="experience"> </span>
+        </p>
+        <p>
+          <span> Spoken languages: German, English</span>
+          <br />
+          <span>Programming skills: Flutter with Dart and Python</span>
+        </p>
+        <script>
+          function calculateAge() {
+            var diff_ms = Date.now() - new Date(2003, 5, 7).getTime();
+            var age_dt = new Date(diff_ms);
+
+            return Math.abs(age_dt.getUTCFullYear() - 1970);
+          }
+
+          setInterval(function () {
+            var difference =
+              new Date().getTime() -
+              //This date is the creation date of my first python script. Probably not my first line of code but the first file that i found on my backup.
+              new Date(2019, 11, 14, 10, 43, 54).getTime();
+
+            var years = Math.floor(difference / (1000 * 60 * 60 * 24 * 365));
+            difference = difference % (1000 * 60 * 60 * 24 * 365);
+            var months = Math.floor(difference / (1000 * 60 * 60 * 24 * 30.42));
+            difference = difference % (1000 * 60 * 60 * 24 * 30.42);
+            var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            difference = difference % (1000 * 60 * 60 * 24);
+            var hours = Math.floor(difference / (1000 * 60 * 60));
+            difference = difference % (1000 * 60 * 60);
+            var minutes = Math.floor(difference / (1000 * 60));
+            difference = difference % (1000 * 60);
+            var seconds = Math.floor(difference / 1000);
+
+            document.getElementById("experience").innerHTML =
+              "Experience: " +
+              years +
+              " years, " +
+              months +
+              " months, " +
+              days +
+              " days, " +
+              hours +
+              " hours, " +
+              minutes +
+              " minutes, " +
+              seconds +
+              " seconds";
+          }, 1000);
+
+          document.getElementById("age").innerHTML = "Age: " + calculateAge();
+        </script>
 
         <img
           src="assets/images/terminal-symbol.svg"
