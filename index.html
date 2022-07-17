@@ -133,7 +133,7 @@
             // if input is /help or /help <command> then show help
             if (document.getElementById(`input-${counter}`).value === "/help") {
 
-              const help = document.createElement("span");
+              const help = document.createElement("p");
               help.innerHTML = `<span class="terminal-text-highlighted">/help</span> - shows this help message<br />`;
               help.innerHTML += `<span class="terminal-text-highlighted">/about</span> - shows information about me (soon)<br />`;
               help.innerHTML += `<span class="terminal-text-highlighted">/projects</span> - shows my projects (soon)<br />`;
