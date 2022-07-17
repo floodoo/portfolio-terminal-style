@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
   <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+  <script type="text/javascript">
+    function setCounter() {
+      localStorage.setItem("counter", 0);
+    }
+    window.onload = setCounter;
+  </script>
   <title>Florian Schmitz</title>
 </head>
 
@@ -101,6 +107,7 @@
         document.querySelector(".Typewriter__cursor").style.backgroundColor =
           "transparent";
         document.getElementById("line-2").style.display = "block";
+        document.getElementById("input-0").focus();
       }, 4000);
     </script>
     <div id="line-2" style="display: none">
@@ -110,6 +117,71 @@
       <span style="color: #60fdff">main</span>
       <span class="terminal-text-highlighted">]</span>
       <span>⚡️</span>
+      <input class="input-0" id="input-0" autoComplete="off" />
+      <script>
+
+
+        function createElements() {
+          var counter = localStorage.getItem("counter");
+          counter = parseInt(counter);
+          var inputWithCounter = `input-${counter + 1}`;
+
+          if (counter === 0) {
+            var lastInputField = "input-0";
+          } else {
+            var lastInputField = `input-${counter - 1}`;
+          }
+
+          document.getElementById(`input-${counter}`).addEventListener("keydown", (e) => {
+            if (e.key !== "Enter") {
+              return;
+            }
+
+            const input = document.getElementById(`input-${counter}`).disabled = true;
+            document.getElementById("line-2").appendChild(document.createElement("br"));
+            const nextLine = document.createElement("img");
+            nextLine.src = "assets/images/terminal-symbol.svg";
+            nextLine.style = "padding-right: 4px; padding-top: 15px";
+            nextLine.alt = "terminal new line symbol";
+            document.getElementById("line-2").appendChild(nextLine);
+
+            const nextLine2 = document.createElement("span");
+            nextLine2.className = "terminal-text-highlighted";
+            nextLine2.innerHTML = "portfolio [";
+            document.getElementById("line-2").appendChild(nextLine2);
+
+            const nextLine3 = document.createElement("span");
+            nextLine3.style = "color: #60fdff";
+            nextLine3.innerHTML = "main";
+            document.getElementById("line-2").appendChild(nextLine3);
+
+            const nextLine4 = document.createElement("span");
+            nextLine4.className = "terminal-text-highlighted";
+            nextLine4.innerHTML = "]";
+            document.getElementById("line-2").appendChild(nextLine4);
+
+            const nextLine5 = document.createElement("span");
+            nextLine5.innerHTML = "⚡️";
+            document.getElementById("line-2").appendChild(nextLine5);
+
+            const nextLine6 = document.createElement("input");
+            nextLine6.className = inputWithCounter;
+            nextLine6.id = inputWithCounter;
+            nextLine6.autoComplete = "off";
+            document.getElementById("line-2").appendChild(nextLine6);
+            document.getElementById(inputWithCounter).focus();
+
+            counter++;
+            localStorage.setItem("counter", counter);
+
+            createElements();
+
+          });
+        }
+        createElements();
+
+
+      </script>
     </div>
   </div>
 </body>

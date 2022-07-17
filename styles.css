@@ -99,3 +99,19 @@ p {
 h2 {
     color: #C7C7C7;
 }
+
+input {
+    background-color: transparent;
+    border: none;
+    color: #C7C7C7;
+    font-family: monospace;
+    width: 80%;
+}
+
+input:focus { 
+    outline: none;
+}
+
+form {
+    display: inline;
+}
