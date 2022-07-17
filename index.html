@@ -86,6 +86,10 @@
     <img src="assets/images/terminal-symbol.svg" alt="terminal new line symbol" style="padding-right: 4px" />
     <span class="terminal-text-highlighted">~ </span>
     <span id="typewriter"></span>
+    <span id="typewriter-text" style="display: none">
+      <span class="terminal-text-highlighted">cd </span>
+      <span class="terminal-text">development/portfolio</span>
+    </span>
     <script type="text/javascript">
       const typewriter = new Typewriter("#typewriter", {
         loop: false,
@@ -94,17 +98,15 @@
 
       typewriter
         .typeString('<span class="terminal-text-highlighted">cd </span>')
-        .typeString(
-          '<span class="terminal-text">development/portfolio</span>'
-        )
+        .typeString('<span class="terminal-text">development/portfolio</span>')
         .start();
 
       setTimeout(function () {
-        // set cursor color to transparent, because i can't delete it
-        document.querySelector(".Typewriter__cursor").style.backgroundColor =
-          "transparent";
         document.getElementById("line-2").style.display = "block";
         document.getElementById("input-0").focus();
+
+        document.getElementById("typewriter").style = "display: none";
+        document.getElementById("typewriter-text").style = "display: inline";
       }, 4000);
     </script>
     <div id="line-2" style="display: none">
@@ -130,7 +132,8 @@
 
             // if input is /help or /help <command> then show help
             if (document.getElementById(`input-${counter}`).value === "/help") {
-              const help = document.createElement("p");
+
+              const help = document.createElement("span");
               help.innerHTML = `<span class="terminal-text-highlighted">/help</span> - shows this help message<br />`;
               help.innerHTML += `<span class="terminal-text-highlighted">/about</span> - shows information about me (soon)<br />`;
               help.innerHTML += `<span class="terminal-text-highlighted">/projects</span> - shows my projects (soon)<br />`;
@@ -141,6 +144,12 @@
               help.className = "terminal-text";
               document.getElementById("line-2").appendChild(help);
               makeBr = false;
+            } else {
+              document.getElementById("line-2").appendChild(document.createElement("br"));
+              const notFound = document.createElement("span");
+              notFound.innerHTML = `<span class="terminal-text-highlighted">${document.getElementById(`input-${counter}`).value}</span> - command not found`;
+              notFound.className = "terminal-text";
+              document.getElementById("line-2").appendChild(notFound);
             }
 
             const input = document.getElementById(`input-${counter}`).disabled = true;
