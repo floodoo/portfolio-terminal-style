@@ -1,5 +1,5 @@
 html {
-    overflow: hidden;
+    overflow: scroll;
     font-family: monospace;
     min-width:900px;
     width: auto !important;
@@ -114,4 +114,8 @@ input:focus {
 
 form {
     display: inline;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
