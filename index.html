@@ -7,10 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
   <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
   <script type="text/javascript">
-    function setCounter() {
-      localStorage.setItem("counter", 0);
-    }
-    window.onload = setCounter;
+    sessionStorage.setItem("counter", 0);
   </script>
   <title>Florian Schmitz</title>
 </head>
@@ -119,18 +116,10 @@
       <span>⚡️</span>
       <input class="input-0" id="input-0" autoComplete="off" />
       <script>
-
-
         function createElements() {
-          var counter = localStorage.getItem("counter");
+          var counter = sessionStorage.getItem("counter");
           counter = parseInt(counter);
           var inputWithCounter = `input-${counter + 1}`;
-
-          if (counter === 0) {
-            var lastInputField = "input-0";
-          } else {
-            var lastInputField = `input-${counter - 1}`;
-          }
 
           document.getElementById(`input-${counter}`).addEventListener("keydown", (e) => {
             if (e.key !== "Enter") {
@@ -172,7 +161,7 @@
             document.getElementById(inputWithCounter).focus();
 
             counter++;
-            localStorage.setItem("counter", counter);
+            sessionStorage.setItem("counter", counter);
 
             createElements();
 
