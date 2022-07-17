@@ -91,7 +91,7 @@
       <span class="terminal-text">development/portfolio</span>
     </span>
     <script type="text/javascript">
-      const typewriter = new Typewriter("#typewriter", {
+      const typewriter = new Typewriter(document.getElementById("typewriter"), {
         loop: false,
         delay: 100,
       });
@@ -102,21 +102,48 @@
         .start();
 
       setTimeout(function () {
-        document.getElementById("line-2").style.display = "block";
-        document.getElementById("input-0").focus();
-
+        document.getElementById("line-1").style.display = "block";
         document.getElementById("typewriter").style = "display: none";
         document.getElementById("typewriter-text").style = "display: inline";
+
+        const typewriter2 = new Typewriter(document.getElementById("typewriter-2"), {
+          loop: false,
+          delay: 100,
+        });
+
+        typewriter2
+          .typeString('<span class="terminal-text-highlighted">make </span>')
+          .typeString('<span class="terminal-text">portfolio</span>')
+          .start();
       }, 4000);
+
+      setTimeout(function () {
+        document.getElementById("line-2").style.display = "block";
+        document.getElementById("typewriter-2").style = "display: none";
+        document.getElementById("typewriter-text-2").style = "display: inline";
+        document.getElementById("input-0").focus();
+      }, 7000);
     </script>
-    <div id="line-2" style="display: none">
+
+    <div id="line-1" style="display: none">
       <img src="assets/images/terminal-symbol.svg" alt="terminal new line symbol"
         style="padding-right: 4px; padding-top: 15px" />
       <span class="terminal-text-highlighted">portfolio [</span>
       <span style="color: #60fdff">main</span>
       <span class="terminal-text-highlighted">]</span>
       <span>⚡️</span>
-      <input class="input-0" id="input-0" autoComplete="off" placeholder="/help" />
+      <span id="typewriter-2"></span>
+      <span id="typewriter-text-2" style="display: none">
+        <span class="terminal-text-highlighted">make </span>
+        <span class="terminal-text">portfolio</span>
+      </span>
+    </div>
+    <div id="line-2" style="display: none">
+      <div style=" padding-top: 15px;">
+        <span class="terminal-text-highlighted">portfolio </span>
+        <span>⚡️</span>
+        <input class="input-0" id="input-0" autoComplete="off" placeholder="/help" />
+      </div>
       <script>
         function createElements() {
           var counter = sessionStorage.getItem("counter");
@@ -128,11 +155,9 @@
               return;
             }
 
-            var makeBr = true;
 
             // if input is /help or /help <command> then show help
             if (document.getElementById(`input-${counter}`).value === "/help") {
-
               const help = document.createElement("p");
               help.innerHTML = `<span class="terminal-text-highlighted">/help</span> - shows this help message<br />`;
               help.innerHTML += `<span class="terminal-text-highlighted">/about</span> - shows information about me (soon)<br />`;
@@ -145,47 +170,28 @@
               document.getElementById("line-2").appendChild(help);
               makeBr = false;
             } else {
-              document.getElementById("line-2").appendChild(document.createElement("br"));
-              const notFound = document.createElement("span");
+              const notFound = document.createElement("div");
               notFound.innerHTML = `<span class="terminal-text-highlighted">${document.getElementById(`input-${counter}`).value}</span> - command not found`;
               notFound.className = "terminal-text";
               document.getElementById("line-2").appendChild(notFound);
             }
 
             const input = document.getElementById(`input-${counter}`).disabled = true;
-            if (makeBr) {
-              document.getElementById("line-2").appendChild(document.createElement("br"));
-            }
-            const nextLine = document.createElement("img");
-            nextLine.src = "assets/images/terminal-symbol.svg";
-            nextLine.style = "padding-right: 4px; padding-top: 15px";
-            nextLine.alt = "terminal new line symbol";
-            document.getElementById("line-2").appendChild(nextLine);
 
             const nextLine2 = document.createElement("span");
             nextLine2.className = "terminal-text-highlighted";
-            nextLine2.innerHTML = "portfolio [";
+            nextLine2.innerHTML = "portfolio ";
             document.getElementById("line-2").appendChild(nextLine2);
 
             const nextLine3 = document.createElement("span");
-            nextLine3.style = "color: #60fdff";
-            nextLine3.innerHTML = "main";
+            nextLine3.innerHTML = "⚡️";
             document.getElementById("line-2").appendChild(nextLine3);
 
-            const nextLine4 = document.createElement("span");
-            nextLine4.className = "terminal-text-highlighted";
-            nextLine4.innerHTML = "]";
+            const nextLine4 = document.createElement("input");
+            nextLine4.className = inputWithCounter;
+            nextLine4.id = inputWithCounter;
+            nextLine4.autoComplete = "off";
             document.getElementById("line-2").appendChild(nextLine4);
-
-            const nextLine5 = document.createElement("span");
-            nextLine5.innerHTML = "⚡️";
-            document.getElementById("line-2").appendChild(nextLine5);
-
-            const nextLine6 = document.createElement("input");
-            nextLine6.className = inputWithCounter;
-            nextLine6.id = inputWithCounter;
-            nextLine6.autoComplete = "off";
-            document.getElementById("line-2").appendChild(nextLine6);
             document.getElementById(inputWithCounter).focus();
 
             counter++;
