@@ -7,48 +7,6 @@
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script type="text/javascript">
       sessionStorage.setItem("counter", 0);
-
-      function calculateAge() {
-        var diff_ms = Date.now() - new Date(2003, 5, 7).getTime();
-        var age_dt = new Date(diff_ms);
-
-        document.getElementById("age").innerHTML =
-          "Age: " + Math.abs(age_dt.getUTCFullYear() - 1970);
-      }
-
-      function calculateExperience() {
-        var difference =
-          new Date().getTime() -
-          //This date is the creation date of my first python script. Probably not my first line of code but the first file that i found on my backup.
-          new Date(2019, 11, 14, 10, 43, 54).getTime();
-
-        var years = Math.floor(difference / (1000 * 60 * 60 * 24 * 365));
-        difference = difference % (1000 * 60 * 60 * 24 * 365);
-        var months = Math.floor(difference / (1000 * 60 * 60 * 24 * 30.42));
-        difference = difference % (1000 * 60 * 60 * 24 * 30.42);
-        var days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        difference = difference % (1000 * 60 * 60 * 24);
-        var hours = Math.floor(difference / (1000 * 60 * 60));
-        difference = difference % (1000 * 60 * 60);
-        var minutes = Math.floor(difference / (1000 * 60));
-        difference = difference % (1000 * 60);
-        var seconds = Math.floor(difference / 1000);
-
-        document.getElementById("experience").innerHTML =
-          "Experience since: " +
-          years +
-          " years, " +
-          months +
-          " months, " +
-          days +
-          " days, " +
-          hours +
-          " hours, " +
-          minutes +
-          " minutes, " +
-          seconds +
-          " seconds";
-      }
     </script>
     <title>Florian Schmitz</title>
   </head>
@@ -212,7 +170,7 @@
             class="input-0"
             id="input-0"
             autocomplete="off"
-            placeholder="/help"
+            placeholder="help"
           />
         </div>
         <script>
@@ -229,21 +187,21 @@
                 }
 
                 if (
-                  document.getElementById(`input-${counter}`).value === "/help"
+                  document.getElementById(`input-${counter}`).value === "help"
                 ) {
                   const help = document.createElement("p");
-                  help.innerHTML = `<span class="terminal-text-highlighted">/help</span> - shows this help message<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">/about</span> - shows information about me<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">/projects</span> - shows my projects<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">/blog</span> - shows my blog<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">/contact</span> - shows my contact informations<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">/clear</span> - clears the terminal (soon)<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">/exit</span> - exits the terminal (soon)`;
+                  help.innerHTML = `<span class="terminal-text-highlighted">help</span> - shows this help message<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">about</span> - shows information about me<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">projects</span> - shows my projects<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">blog</span> - shows my blog<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">contact</span> - shows my contact informations<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">clear</span> - clears the terminal (soon)<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">exit</span> - exits the terminal (soon)`;
                   help.className = "terminal-text";
                   document.getElementById("line-2").appendChild(help);
                   makeBr = false;
                 } else if (
-                  document.getElementById(`input-${counter}`).value === "/about"
+                  document.getElementById(`input-${counter}`).value === "about"
                 ) {
                   const about = document.createElement("p");
                   about.innerHTML = `<span style="color:orange">Warning: </span>An instance of about is already running. You will be redirected...`;
@@ -256,7 +214,7 @@
                   }, 5000);
                 } else if (
                   document.getElementById(`input-${counter}`).value ===
-                  "/projects"
+                  "projects"
                 ) {
                   const projects = document.createElement("p");
                   projects.innerHTML = `<span style="color:orange">Warning: </span>An instance of projects is already running. You will be redirected...`;
@@ -268,7 +226,7 @@
                     window.location.href = "projects.html";
                   }, 5000);
                 } else if (
-                  document.getElementById(`input-${counter}`).value === "/blog"
+                  document.getElementById(`input-${counter}`).value === "blog"
                 ) {
                   const blog = document.createElement("p");
                   blog.innerHTML = `<span style="color:orange">Warning: </span>An instance of blog is already running. You will be redirected...`;
@@ -281,7 +239,7 @@
                   }, 5000);
                 } else if (
                   document.getElementById(`input-${counter}`).value ===
-                  "/contact"
+                  "contact"
                 ) {
                   const contact = document.createElement("p");
                   contact.innerHTML = `<span style="color:orange">Warning: </span>An instance of contact is already running. You will be redirected...`;
