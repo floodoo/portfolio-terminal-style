@@ -1,210 +1,335 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
-  <script type="text/javascript">
-    sessionStorage.setItem("counter", 0);
-  </script>
-  <title>Florian Schmitz</title>
-</head>
-
-<body>
-  <!-- Navbar -->
-  <div class="terminal-window">
-    <div class="terminal-window-button" style="background-color: #ff5f57"></div>
-    <div class="terminal-window-button" style="background-color: #febc30"></div>
-    <div class="terminal-window-button" style="background-color: #2bc840"></div>
-    <div class="terminal-window-name">florianschmitz@MacBook-Pro:~</div>
-  </div>
-  <nav>
-    <a class="nav-button-active" data-hotkey="Meta+1" href="index.html">
-      <ul>
-        <li class="nav-button-text">~</li>
-        <li>⌘1</li>
-      </ul>
-    </a>
-    <a class="nav-button" data-hotkey="Meta+2" href="about.html">
-      <ul>
-        <li class="nav-button-text">About</li>
-        <li>⌘2</li>
-      </ul>
-    </a>
-    <a class="nav-button" data-hotkey="Meta+3" href="projects.html">
-      <ul>
-        <li class="nav-button-text">Projects</li>
-        <li>⌘3</li>
-      </ul>
-    </a>
-    <a class="nav-button" data-hotkey="Meta+4" href="blog.html">
-      <ul>
-        <li class="nav-button-text">Blog</li>
-        <li>⌘4</li>
-      </ul>
-    </a>
-    <a class="nav-button" data-hotkey="Meta+5" href="contact.html">
-      <ul>
-        <li class="nav-button-text">Contact</li>
-        <li>⌘5</li>
-      </ul>
-    </a>
-  </nav>
-  <script>
-    document.addEventListener("keydown", (keyboardEvent) => {
-      [...document.querySelectorAll(`[data-hotkey]`)].forEach((elem) => {
-        const combineKey = elem.dataset.hotkey.split("+");
-
-        for (let myKeyStr of combineKey) {
-          myKeyStr = myKeyStr.toUpperCase();
-
-          if (myKeyStr.length > 1) {
-            if (myKeyStr === "META" && keyboardEvent.metaKey) {
-              continue;
-            }
-          }
-          if (keyboardEvent.key.toUpperCase() !== myKeyStr) {
-            return;
-          }
-        }
-        keyboardEvent.preventDefault();
-        elem.click();
-      });
-    });
-  </script>
-  <!-- End of Navbar -->
-  <div style="padding-left: 15px">
-    <div class="terminal-text" id="last-login"></div>
-    <script>
-      document.getElementById(
-        "last-login"
-      ).innerHTML = `Last login: ${new Date().toLocaleString()} on ttys000`;
-    </script>
-
-    <img src="assets/images/terminal-symbol.svg" alt="terminal new line symbol" style="padding-right: 4px" />
-    <span class="terminal-text-highlighted">~ </span>
-    <span id="typewriter"></span>
-    <span id="typewriter-text" style="display: none">
-      <span class="terminal-text-highlighted">cd </span>
-      <span class="terminal-text">development/portfolio</span>
-    </span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script type="text/javascript">
-      const typewriter = new Typewriter(document.getElementById("typewriter"), {
-        loop: false,
-        delay: 100,
-      });
+      sessionStorage.setItem("counter", 0);
 
-      typewriter
-        .typeString('<span class="terminal-text-highlighted">cd </span>')
-        .typeString('<span class="terminal-text">development/portfolio</span>')
-        .start();
+      function calculateAge() {
+        var diff_ms = Date.now() - new Date(2003, 5, 7).getTime();
+        var age_dt = new Date(diff_ms);
 
-      setTimeout(function () {
-        document.getElementById("line-1").style.display = "block";
-        document.getElementById("typewriter").style = "display: none";
-        document.getElementById("typewriter-text").style = "display: inline";
+        document.getElementById("age").innerHTML =
+          "Age: " + Math.abs(age_dt.getUTCFullYear() - 1970);
+      }
 
-        const typewriter2 = new Typewriter(document.getElementById("typewriter-2"), {
-          loop: false,
-          delay: 100,
-        });
+      function calculateExperience() {
+        var difference =
+          new Date().getTime() -
+          //This date is the creation date of my first python script. Probably not my first line of code but the first file that i found on my backup.
+          new Date(2019, 11, 14, 10, 43, 54).getTime();
 
-        typewriter2
-          .typeString('<span class="terminal-text-highlighted">make </span>')
-          .typeString('<span class="terminal-text">portfolio</span>')
-          .start();
-      }, 4000);
+        var years = Math.floor(difference / (1000 * 60 * 60 * 24 * 365));
+        difference = difference % (1000 * 60 * 60 * 24 * 365);
+        var months = Math.floor(difference / (1000 * 60 * 60 * 24 * 30.42));
+        difference = difference % (1000 * 60 * 60 * 24 * 30.42);
+        var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        difference = difference % (1000 * 60 * 60 * 24);
+        var hours = Math.floor(difference / (1000 * 60 * 60));
+        difference = difference % (1000 * 60 * 60);
+        var minutes = Math.floor(difference / (1000 * 60));
+        difference = difference % (1000 * 60);
+        var seconds = Math.floor(difference / 1000);
 
-      setTimeout(function () {
-        document.getElementById("line-2").style.display = "block";
-        document.getElementById("typewriter-2").style = "display: none";
-        document.getElementById("typewriter-text-2").style = "display: inline";
-        document.getElementById("input-0").focus();
-      }, 7000);
+        document.getElementById("experience").innerHTML =
+          "Experience since: " +
+          years +
+          " years, " +
+          months +
+          " months, " +
+          days +
+          " days, " +
+          hours +
+          " hours, " +
+          minutes +
+          " minutes, " +
+          seconds +
+          " seconds";
+      }
     </script>
+    <title>Florian Schmitz</title>
+  </head>
 
-    <div id="line-1" style="display: none">
-      <img src="assets/images/terminal-symbol.svg" alt="terminal new line symbol"
-        style="padding-right: 4px; padding-top: 15px" />
-      <span class="terminal-text-highlighted">portfolio [</span>
-      <span style="color: #60fdff">main</span>
-      <span class="terminal-text-highlighted">]</span>
-      <span>⚡️</span>
-      <span id="typewriter-2"></span>
-      <span id="typewriter-text-2" style="display: none">
-        <span class="terminal-text-highlighted">make </span>
-        <span class="terminal-text">portfolio</span>
-      </span>
+  <body>
+    <!-- Navbar -->
+    <div class="terminal-window">
+      <div
+        class="terminal-window-button"
+        style="background-color: #ff5f57"
+      ></div>
+      <div
+        class="terminal-window-button"
+        style="background-color: #febc30"
+      ></div>
+      <div
+        class="terminal-window-button"
+        style="background-color: #2bc840"
+      ></div>
+      <div class="terminal-window-name">florianschmitz@MacBook-Pro:~</div>
     </div>
-    <div id="line-2" style="display: none">
-      <div style=" padding-top: 15px;">
-        <span class="terminal-text-highlighted">portfolio </span>
-        <span>⚡️</span>
-        <input class="input-0" id="input-0" autoComplete="off" placeholder="/help" />
-      </div>
-      <script>
-        function createElements() {
-          var counter = sessionStorage.getItem("counter");
-          counter = parseInt(counter);
-          var inputWithCounter = `input-${counter + 1}`;
+    <nav>
+      <a class="nav-button-active" data-hotkey="Meta+1" href="index.html">
+        <ul>
+          <li class="nav-button-text">~</li>
+          <li>⌘1</li>
+        </ul>
+      </a>
+      <a class="nav-button" data-hotkey="Meta+2" href="about.html">
+        <ul>
+          <li class="nav-button-text">About</li>
+          <li>⌘2</li>
+        </ul>
+      </a>
+      <a class="nav-button" data-hotkey="Meta+3" href="projects.html">
+        <ul>
+          <li class="nav-button-text">Projects</li>
+          <li>⌘3</li>
+        </ul>
+      </a>
+      <a class="nav-button" data-hotkey="Meta+4" href="blog.html">
+        <ul>
+          <li class="nav-button-text">Blog</li>
+          <li>⌘4</li>
+        </ul>
+      </a>
+      <a class="nav-button" data-hotkey="Meta+5" href="contact.html">
+        <ul>
+          <li class="nav-button-text">Contact</li>
+          <li>⌘5</li>
+        </ul>
+      </a>
+    </nav>
+    <script>
+      document.addEventListener("keydown", (keyboardEvent) => {
+        [...document.querySelectorAll(`[data-hotkey]`)].forEach((elem) => {
+          const combineKey = elem.dataset.hotkey.split("+");
 
-          document.getElementById(`input-${counter}`).addEventListener("keydown", (e) => {
-            if (e.key !== "Enter") {
+          for (let myKeyStr of combineKey) {
+            myKeyStr = myKeyStr.toUpperCase();
+
+            if (myKeyStr.length > 1) {
+              if (myKeyStr === "META" && keyboardEvent.metaKey) {
+                continue;
+              }
+            }
+            if (keyboardEvent.key.toUpperCase() !== myKeyStr) {
               return;
             }
-
-
-            // if input is /help or /help <command> then show help
-            if (document.getElementById(`input-${counter}`).value === "/help") {
-              const help = document.createElement("p");
-              help.innerHTML = `<span class="terminal-text-highlighted">/help</span> - shows this help message<br />`;
-              help.innerHTML += `<span class="terminal-text-highlighted">/about</span> - shows information about me (soon)<br />`;
-              help.innerHTML += `<span class="terminal-text-highlighted">/projects</span> - shows my projects (soon)<br />`;
-              help.innerHTML += `<span class="terminal-text-highlighted">/blog</span> - shows my blog (soon)<br />`;
-              help.innerHTML += `<span class="terminal-text-highlighted">/contact</span> - shows my contact informations (soon)<br />`;
-              help.innerHTML += `<span class="terminal-text-highlighted">/clear</span> - clears the terminal (soon)<br />`;
-              help.innerHTML += `<span class="terminal-text-highlighted">/exit</span> - exits the terminal (soon)`;
-              help.className = "terminal-text";
-              document.getElementById("line-2").appendChild(help);
-              makeBr = false;
-            } else {
-              const notFound = document.createElement("div");
-              notFound.innerHTML = `<span class="terminal-text-highlighted">${document.getElementById(`input-${counter}`).value}</span> - command not found`;
-              notFound.className = "terminal-text";
-              document.getElementById("line-2").appendChild(notFound);
-            }
-
-            const input = document.getElementById(`input-${counter}`).disabled = true;
-
-            const nextLine2 = document.createElement("span");
-            nextLine2.className = "terminal-text-highlighted";
-            nextLine2.innerHTML = "portfolio ";
-            document.getElementById("line-2").appendChild(nextLine2);
-
-            const nextLine3 = document.createElement("span");
-            nextLine3.innerHTML = "⚡️";
-            document.getElementById("line-2").appendChild(nextLine3);
-
-            const nextLine4 = document.createElement("input");
-            nextLine4.className = inputWithCounter;
-            nextLine4.id = inputWithCounter;
-            nextLine4.autoComplete = "off";
-            document.getElementById("line-2").appendChild(nextLine4);
-            document.getElementById(inputWithCounter).focus();
-
-            counter++;
-            sessionStorage.setItem("counter", counter);
-
-            createElements();
-
-          });
-        }
-        createElements();
+          }
+          keyboardEvent.preventDefault();
+          elem.click();
+        });
+      });
+    </script>
+    <!-- End of Navbar -->
+    <div style="padding-left: 15px">
+      <div class="terminal-text" id="last-login"></div>
+      <script>
+        document.getElementById(
+          "last-login"
+        ).innerHTML = `Last login: ${new Date().toLocaleString()} on ttys000`;
       </script>
-    </div>
-  </div>
-</body>
 
+      <img
+        src="assets/images/terminal-symbol.svg"
+        alt="terminal new line symbol"
+        style="padding-right: 4px"
+      />
+      <span class="terminal-text-highlighted">~ </span>
+      <span id="typewriter"></span>
+      <span id="typewriter-text" style="display: none">
+        <span class="terminal-text-highlighted">cd </span>
+        <span class="terminal-text">development/portfolio</span>
+      </span>
+      <script type="text/javascript">
+        const typewriter = new Typewriter(
+          document.getElementById("typewriter"),
+          {
+            loop: false,
+            delay: 100,
+          }
+        );
+
+        typewriter
+          .typeString('<span class="terminal-text-highlighted">cd </span>')
+          .typeString(
+            '<span class="terminal-text">development/portfolio</span>'
+          )
+          .start();
+
+        setTimeout(function () {
+          document.getElementById("line-1").style.display = "block";
+          document.getElementById("typewriter").style = "display: none";
+          document.getElementById("typewriter-text").style = "display: inline";
+
+          const typewriter2 = new Typewriter(
+            document.getElementById("typewriter-2"),
+            {
+              loop: false,
+              delay: 100,
+            }
+          );
+
+          typewriter2
+            .typeString('<span class="terminal-text-highlighted">make </span>')
+            .typeString('<span class="terminal-text">portfolio</span>')
+            .start();
+        }, 4000);
+
+        setTimeout(function () {
+          document.getElementById("line-2").style.display = "block";
+          document.getElementById("typewriter-2").style = "display: none";
+          document.getElementById("typewriter-text-2").style =
+            "display: inline";
+          document.getElementById("input-0").focus();
+        }, 7000);
+      </script>
+
+      <div id="line-1" style="display: none">
+        <img
+          src="assets/images/terminal-symbol.svg"
+          alt="terminal new line symbol"
+          style="padding-right: 4px; padding-top: 15px"
+        />
+        <span class="terminal-text-highlighted">portfolio [</span>
+        <span style="color: #60fdff">main</span>
+        <span class="terminal-text-highlighted">]</span>
+        <span>⚡️</span>
+        <span id="typewriter-2"></span>
+        <span id="typewriter-text-2" style="display: none">
+          <span class="terminal-text-highlighted">make </span>
+          <span class="terminal-text">portfolio</span>
+        </span>
+      </div>
+      <div id="line-2" style="display: none">
+        <div style="padding-top: 15px">
+          <span class="terminal-text-highlighted">portfolio </span>
+          <span>⚡️</span>
+          <input
+            class="input-0"
+            id="input-0"
+            autocomplete="off"
+            placeholder="/help"
+          />
+        </div>
+        <script>
+          async function createElements() {
+            var counter = sessionStorage.getItem("counter");
+            counter = parseInt(counter);
+            var inputWithCounter = `input-${counter + 1}`;
+
+            document
+              .getElementById(`input-${counter}`)
+              .addEventListener("keydown", (e) => {
+                if (e.key !== "Enter") {
+                  return;
+                }
+
+                if (
+                  document.getElementById(`input-${counter}`).value === "/help"
+                ) {
+                  const help = document.createElement("p");
+                  help.innerHTML = `<span class="terminal-text-highlighted">/help</span> - shows this help message<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">/about</span> - shows information about me (soon)<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">/projects</span> - shows my projects (soon)<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">/blog</span> - shows my blog (soon)<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">/contact</span> - shows my contact informations (soon)<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">/clear</span> - clears the terminal (soon)<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">/exit</span> - exits the terminal (soon)`;
+                  help.className = "terminal-text";
+                  document.getElementById("line-2").appendChild(help);
+                  makeBr = false;
+                } else if (
+                  document.getElementById(`input-${counter}`).value === "/about"
+                ) {
+                  const about = document.createElement("p");
+                  about.innerHTML = `<span style="color:orange">Warning: </span>An instance of about is already running. You will be redirected...`;
+                  about.className = "terminal-text";
+                  document.getElementById("line-2").appendChild(about);
+                  about.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
+
+                  setTimeout(function () {
+                    window.location.href = "about.html";
+                  }, 5000);
+                } else if (
+                  document.getElementById(`input-${counter}`).value ===
+                  "/projects"
+                ) {
+                  const projects = document.createElement("p");
+                  projects.innerHTML = `<span style="color:orange">Warning: </span>An instance of projects is already running. You will be redirected...`;
+                  projects.className = "terminal-text";
+                  document.getElementById("line-2").appendChild(projects);
+                  projects.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
+
+                  setTimeout(function () {
+                    window.location.href = "projects.html";
+                  }, 5000);
+                } else if (
+                  document.getElementById(`input-${counter}`).value === "/blog"
+                ) {
+                  const blog = document.createElement("p");
+                  blog.innerHTML = `<span style="color:orange">Warning: </span>An instance of blog is already running. You will be redirected...`;
+                  blog.className = "terminal-text";
+                  document.getElementById("line-2").appendChild(blog);
+                  blog.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
+
+                  setTimeout(function () {
+                    window.location.href = "blog.html";
+                  }, 5000);
+                } else if (
+                  document.getElementById(`input-${counter}`).value ===
+                  "/contact"
+                ) {
+                  const contact = document.createElement("p");
+                  contact.innerHTML = `<span style="color:orange">Warning: </span>An instance of contact is already running. You will be redirected...`;
+                  contact.className = "terminal-text";
+                  document.getElementById("line-2").appendChild(contact);
+                  contact.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
+
+                  setTimeout(function () {
+                    window.location.href = "contact.html";
+                  }, 5000);
+                } else {
+                  const notFound = document.createElement("div");
+                  notFound.innerHTML = `<span class="terminal-text-highlighted">${
+                    document.getElementById(`input-${counter}`).value
+                  }</span> - command not found`;
+                  notFound.className = "terminal-text";
+                  document.getElementById("line-2").appendChild(notFound);
+                }
+
+                const input = (document.getElementById(
+                  `input-${counter}`
+                ).disabled = true);
+
+                const nextLine2 = document.createElement("span");
+                nextLine2.className = "terminal-text-highlighted";
+                nextLine2.innerHTML = "portfolio ";
+                document.getElementById("line-2").appendChild(nextLine2);
+
+                const nextLine3 = document.createElement("span");
+                nextLine3.innerHTML = "⚡️";
+                document.getElementById("line-2").appendChild(nextLine3);
+
+                const nextLine4 = document.createElement("input");
+                nextLine4.className = inputWithCounter;
+                nextLine4.id = inputWithCounter;
+                nextLine4.autoComplete = "off";
+                document.getElementById("line-2").appendChild(nextLine4);
+                document.getElementById(inputWithCounter).focus();
+
+                counter++;
+                sessionStorage.setItem("counter", counter);
+
+                createElements();
+              });
+          }
+          createElements();
+        </script>
+      </div>
+    </div>
+  </body>
 </html>
