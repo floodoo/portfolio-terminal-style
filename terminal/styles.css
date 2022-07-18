@@ -41,6 +41,30 @@ body {
     margin: 0 4px;
 }
 
+.terminal-window-close-button {
+    position: relative;
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    margin: 0 4px;
+    background-color: #ff5f57;
+}
+
+.terminal-window-close-button:hover::after {
+    color: black;
+    content: "x";
+    /* center content */
+
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    text-align: center;
+
+}
+
 .terminal-window-name {
     color: #B4B5B4;
     padding-left: 40%;

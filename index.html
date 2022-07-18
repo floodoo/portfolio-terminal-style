@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="terminal/styles.css" />
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script type="text/javascript">
       sessionStorage.setItem("counter", 0);
@@ -14,10 +14,10 @@
   <body>
     <!-- Navbar -->
     <div class="terminal-window">
-      <div
-        class="terminal-window-button"
-        style="background-color: #ff5f57"
-      ></div>
+      <a
+        class="terminal-window-close-button"
+        href="desktop/desktop.html"
+      ></a>
       <div
         class="terminal-window-button"
         style="background-color: #febc30"
@@ -35,25 +35,25 @@
           <li>⌘1</li>
         </ul>
       </a>
-      <a class="nav-button" data-hotkey="Meta+2" href="about.html">
+      <a class="nav-button" data-hotkey="Meta+2" href="terminal/about.html">
         <ul>
           <li class="nav-button-text">About</li>
           <li>⌘2</li>
         </ul>
       </a>
-      <a class="nav-button" data-hotkey="Meta+3" href="projects.html">
+      <a class="nav-button" data-hotkey="Meta+3" href="terminal/projects.html">
         <ul>
           <li class="nav-button-text">Projects</li>
           <li>⌘3</li>
         </ul>
       </a>
-      <a class="nav-button" data-hotkey="Meta+4" href="blog.html">
+      <a class="nav-button" data-hotkey="Meta+4" href="terminal/blog.html">
         <ul>
           <li class="nav-button-text">Blog</li>
           <li>⌘4</li>
         </ul>
       </a>
-      <a class="nav-button" data-hotkey="Meta+5" href="contact.html">
+      <a class="nav-button" data-hotkey="Meta+5" href="terminal/contact.html">
         <ul>
           <li class="nav-button-text">Contact</li>
           <li>⌘5</li>
@@ -95,7 +95,7 @@
       </script>
 
       <img
-        src="assets/images/terminal-symbol.svg"
+        src="terminal/assets/images/terminal-symbol.svg"
         alt="terminal new line symbol"
         style="padding-right: 4px"
       />
@@ -151,7 +151,7 @@
 
       <div id="line-1" style="display: none">
         <img
-          src="assets/images/terminal-symbol.svg"
+          src="terminal/assets/images/terminal-symbol.svg"
           alt="terminal new line symbol"
           style="padding-right: 4px; padding-top: 15px"
         />
@@ -202,7 +202,7 @@
                   help.innerHTML += `<span class="terminal-text-highlighted">whoami</span> - Figure it out😉<br /><br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">ls</span> - list files in current directory<br /><br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">clear</span> - clears the terminal<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">exit</span> - exits the terminal`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">exit</span> - close terminal`;
                   help.className = "terminal-text";
                   document.getElementById("line-2").appendChild(help);
                   makeBr = false;
@@ -296,7 +296,7 @@
                 } else if (
                   document.getElementById(`input-${counter}`).value === "exit"
                 ) {
-                  window.location = "about:blank";
+                  window.location.href = "/desktop/desktop.html";
                   return;
                 } else {
                   const notFound = document.createElement("div");

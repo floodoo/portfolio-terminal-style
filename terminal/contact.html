@@ -11,10 +11,7 @@
   <body>
     <!-- Navbar -->
     <div class="terminal-window">
-      <div
-        class="terminal-window-button"
-        style="background-color: #ff5f57"
-      ></div>
+      <a class="terminal-window-close-button" href="../desktop/desktop.html"></a>
       <div
         class="terminal-window-button"
         style="background-color: #febc30"
@@ -26,7 +23,7 @@
       <div class="terminal-window-name">florianschmitz@MacBook-Pro:~</div>
     </div>
     <nav>
-      <a class="nav-button" data-hotkey="Meta+1" href="index.html">
+      <a class="nav-button" data-hotkey="Meta+1" href="../index.html">
         <ul>
           <li class="nav-button-text">~</li>
           <li>⌘1</li>
@@ -44,13 +41,13 @@
           <li>⌘3</li>
         </ul>
       </a>
-      <a class="nav-button-active" data-hotkey="Meta+4" href="blog.html">
+      <a class="nav-button" data-hotkey="Meta+4" href="blog.html">
         <ul>
           <li class="nav-button-text">Blog</li>
           <li>⌘4</li>
         </ul>
       </a>
-      <a class="nav-button" data-hotkey="Meta+5" href="contact.html">
+      <a class="nav-button-active" data-hotkey="Meta+5" href="contact.html">
         <ul>
           <li class="nav-button-text">Contact</li>
           <li>⌘5</li>
@@ -118,7 +115,7 @@
 
         typewriter
           .typeString('<span class="terminal-text-highlighted">make </span>')
-          .typeString('<span class="terminal-text">blog</span>')
+          .typeString('<span class="terminal-text">contact</span>')
           .start();
 
         setTimeout(function () {
@@ -129,10 +126,8 @@
         }, 2000);
       </script>
       <div id="line-2" style="display: none">
-        <div class="terminal-text">Weird, there's nothing going on here...</div>
-        <div class="terminal-text">
-          I'm going to <span style="color: red">report</span> this.
-        </div>
+        <div class="terminal-text">Florian Schmitz</div>
+        <div class="terminal-text">✉️ contact@flo-dev.me</div>
 
         <img
           src="assets/images/terminal-symbol.svg"

@@ -14,10 +14,10 @@
   <body>
     <!-- Navbar -->
     <div class="terminal-window">
-      <div
-        class="terminal-window-button"
-        style="background-color: #ff5f57"
-      ></div>
+      <a
+        class="terminal-window-close-button"
+        href="../desktop/desktop.html"
+      ></a>
       <div
         class="terminal-window-button"
         style="background-color: #febc30"
@@ -29,7 +29,7 @@
       <div class="terminal-window-name">florianschmitz@MacBook-Pro:~</div>
     </div>
     <nav>
-      <a class="nav-button" data-hotkey="Meta+1" href="index.html">
+      <a class="nav-button" data-hotkey="Meta+1" href="../index.html">
         <ul>
           <li class="nav-button-text">~</li>
           <li>⌘1</li>
@@ -129,6 +129,7 @@
           document.querySelector(".Typewriter__cursor").style.backgroundColor =
             "transparent";
           document.getElementById("line-2").style.display = "block";
+          document.getElementById("input-0").focus();
         }, 2000);
       </script>
       <div id="line-2" style="display: none">
