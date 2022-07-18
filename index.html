@@ -198,7 +198,9 @@
                   help.innerHTML += `<span class="terminal-text-highlighted">about</span> - shows information about me<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">projects</span> - shows my projects<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">blog</span> - shows my blog<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">contact</span> - shows my contact informations<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">contact</span> - shows my contact informations<br /><br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">whoami</span> - Figure it out😉<br /><br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">ls</span> - list files in current directory<br /><br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">clear</span> - clears the terminal<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">exit</span> - exits the terminal`;
                   help.className = "terminal-text";
@@ -254,6 +256,28 @@
                   setTimeout(function () {
                     window.location.href = "contact.html";
                   }, 5000);
+                } else if (
+                  document.getElementById(`input-${counter}`).value === "whoami"
+                ) {
+                  const contact = document.createElement("div");
+                  contact.innerHTML = `3...2...1...`;
+                  contact.className = "terminal-text";
+                  document.getElementById("line-2").appendChild(contact);
+
+                  setTimeout(function () {
+                    window.location.href = "about.html";
+                  }, 3000);
+                } else if (
+                  document.getElementById(`input-${counter}`).value === "ls"
+                ) {
+                  const projects = document.createElement("table");
+
+                  projects.innerHTML = `<tr><td>home</td><td>about</td><td>projects</td></tr>`;
+                  projects.innerHTML += `<tr><td>blog</td><td>contact</td><td>resume</td></tr>`;
+
+                  projects.style.width = "100%";
+                  projects.style.color = "#60fdff";
+                  document.getElementById("line-2").appendChild(projects);
                 } else if (
                   document.getElementById(`input-${counter}`).value === "clear"
                 ) {
