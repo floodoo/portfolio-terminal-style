@@ -69,7 +69,10 @@
             myKeyStr = myKeyStr.toUpperCase();
 
             if (myKeyStr.length > 1) {
-              if (myKeyStr === "META" && keyboardEvent.metaKey) {
+              if (
+                (myKeyStr === "META" && keyboardEvent.metaKey) ||
+                keyboardEvent.ctrlKey
+              ) {
                 continue;
               }
             }
@@ -178,6 +181,7 @@
             var counter = sessionStorage.getItem("counter");
             counter = parseInt(counter);
             var inputWithCounter = `input-${counter + 1}`;
+            var deactivateInput = true;
 
             document
               .getElementById(`input-${counter}`)
@@ -189,21 +193,21 @@
                 if (
                   document.getElementById(`input-${counter}`).value === "help"
                 ) {
-                  const help = document.createElement("p");
+                  const help = document.createElement("div");
                   help.innerHTML = `<span class="terminal-text-highlighted">help</span> - shows this help message<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">about</span> - shows information about me<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">projects</span> - shows my projects<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">blog</span> - shows my blog<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">contact</span> - shows my contact informations<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">clear</span> - clears the terminal (soon)<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">exit</span> - exits the terminal (soon)`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">clear</span> - clears the terminal<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">exit</span> - exits the terminal`;
                   help.className = "terminal-text";
                   document.getElementById("line-2").appendChild(help);
                   makeBr = false;
                 } else if (
                   document.getElementById(`input-${counter}`).value === "about"
                 ) {
-                  const about = document.createElement("p");
+                  const about = document.createElement("div");
                   about.innerHTML = `<span style="color:orange">Warning: </span>An instance of about is already running. You will be redirected...`;
                   about.className = "terminal-text";
                   document.getElementById("line-2").appendChild(about);
@@ -216,7 +220,7 @@
                   document.getElementById(`input-${counter}`).value ===
                   "projects"
                 ) {
-                  const projects = document.createElement("p");
+                  const projects = document.createElement("div");
                   projects.innerHTML = `<span style="color:orange">Warning: </span>An instance of projects is already running. You will be redirected...`;
                   projects.className = "terminal-text";
                   document.getElementById("line-2").appendChild(projects);
@@ -228,7 +232,7 @@
                 } else if (
                   document.getElementById(`input-${counter}`).value === "blog"
                 ) {
-                  const blog = document.createElement("p");
+                  const blog = document.createElement("div");
                   blog.innerHTML = `<span style="color:orange">Warning: </span>An instance of blog is already running. You will be redirected...`;
                   blog.className = "terminal-text";
                   document.getElementById("line-2").appendChild(blog);
@@ -241,7 +245,7 @@
                   document.getElementById(`input-${counter}`).value ===
                   "contact"
                 ) {
-                  const contact = document.createElement("p");
+                  const contact = document.createElement("div");
                   contact.innerHTML = `<span style="color:orange">Warning: </span>An instance of contact is already running. You will be redirected...`;
                   contact.className = "terminal-text";
                   document.getElementById("line-2").appendChild(contact);
@@ -250,6 +254,26 @@
                   setTimeout(function () {
                     window.location.href = "contact.html";
                   }, 5000);
+                } else if (
+                  document.getElementById(`input-${counter}`).value === "clear"
+                ) {
+                  var element = document.getElementById("line-2");
+                  element.parentNode.removeChild(element);
+
+                  var line2 = document.createElement("div");
+                  line2.id = "line-2";
+                  document.getElementById("line-1").appendChild(line2);
+
+                  line2Padding = document.createElement("div");
+                  line2Padding.style.paddingTop = "15px";
+                  document.getElementById("line-2").appendChild(line2Padding);
+
+                  deactivateInput = false;
+                } else if (
+                  document.getElementById(`input-${counter}`).value === "exit"
+                ) {
+                  window.location = "about:blank";
+                  return;
                 } else {
                   const notFound = document.createElement("div");
                   notFound.innerHTML = `<span class="terminal-text-highlighted">${
@@ -259,9 +283,11 @@
                   document.getElementById("line-2").appendChild(notFound);
                 }
 
-                const input = (document.getElementById(
-                  `input-${counter}`
-                ).disabled = true);
+                if (deactivateInput) {
+                  const input = (document.getElementById(
+                    `input-${counter}`
+                  ).disabled = true);
+                }
 
                 const nextLine2 = document.createElement("span");
                 nextLine2.className = "terminal-text-highlighted";

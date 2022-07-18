@@ -69,7 +69,10 @@
             myKeyStr = myKeyStr.toUpperCase();
 
             if (myKeyStr.length > 1) {
-              if (myKeyStr === "META" && keyboardEvent.metaKey) {
+              if (
+                (myKeyStr === "META" && keyboardEvent.metaKey) ||
+                keyboardEvent.ctrlKey
+              ) {
                 continue;
               }
             }
