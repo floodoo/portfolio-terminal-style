@@ -14,10 +14,7 @@
   <body>
     <!-- Navbar -->
     <div class="terminal-window">
-      <a
-        class="terminal-window-close-button"
-        href="desktop/desktop.html"
-      ></a>
+      <a class="terminal-window-close-button" href="desktop/desktop.html"></a>
       <div
         class="terminal-window-button"
         style="background-color: #febc30"
@@ -194,67 +191,48 @@
                   document.getElementById(`input-${counter}`).value === "help"
                 ) {
                   const help = document.createElement("div");
-                  help.innerHTML = `<span class="terminal-text-highlighted">help</span> - shows this help message<br />`;
+                  help.innerHTML = `<span class="terminal-text-highlighted">help</span> - shows this help message<br /><br />`;
+
+                  help.innerHTML += `<span class="terminal-text-highlighted">home</span> - shows home tab<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">about</span> - shows information about me<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">projects</span> - shows my projects<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">blog</span> - shows my blog<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">contact</span> - shows my contact informations<br /><br />`;
+
                   help.innerHTML += `<span class="terminal-text-highlighted">whoami</span> - Figure it out😉<br /><br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">ls</span> - list files in current directory<br /><br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">clear</span> - clears the terminal<br />`;
+
+                  help.innerHTML += `<span class="terminal-text-highlighted">ls</span> - lists all files and folders current directory<br /><br />`;
+
+                  help.innerHTML += `<span class="terminal-text-highlighted">clear</span> - clears terminal<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">exit</span> - close terminal`;
                   help.className = "terminal-text";
                   document.getElementById("line-2").appendChild(help);
                   makeBr = false;
                 } else if (
-                  document.getElementById(`input-${counter}`).value === "about"
+                  document.getElementById(`input-${counter}`).value ===
+                    "home" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "about" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "projects" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "blog" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "contact"
                 ) {
+                  var value = document.getElementById(`input-${counter}`).value;
                   const about = document.createElement("div");
-                  about.innerHTML = `<span style="color:orange">Warning: </span>An instance of about is already running. You will be redirected...`;
+                  about.innerHTML = `<span style="color:orange">Warning: </span>An instance of ${value} is already running. You will be redirected...`;
                   about.className = "terminal-text";
                   document.getElementById("line-2").appendChild(about);
                   about.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
 
                   setTimeout(function () {
-                    window.location.href = "about.html";
-                  }, 5000);
-                } else if (
-                  document.getElementById(`input-${counter}`).value ===
-                  "projects"
-                ) {
-                  const projects = document.createElement("div");
-                  projects.innerHTML = `<span style="color:orange">Warning: </span>An instance of projects is already running. You will be redirected...`;
-                  projects.className = "terminal-text";
-                  document.getElementById("line-2").appendChild(projects);
-                  projects.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
-
-                  setTimeout(function () {
-                    window.location.href = "projects.html";
-                  }, 5000);
-                } else if (
-                  document.getElementById(`input-${counter}`).value === "blog"
-                ) {
-                  const blog = document.createElement("div");
-                  blog.innerHTML = `<span style="color:orange">Warning: </span>An instance of blog is already running. You will be redirected...`;
-                  blog.className = "terminal-text";
-                  document.getElementById("line-2").appendChild(blog);
-                  blog.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
-
-                  setTimeout(function () {
-                    window.location.href = "blog.html";
-                  }, 5000);
-                } else if (
-                  document.getElementById(`input-${counter}`).value ===
-                  "contact"
-                ) {
-                  const contact = document.createElement("div");
-                  contact.innerHTML = `<span style="color:orange">Warning: </span>An instance of contact is already running. You will be redirected...`;
-                  contact.className = "terminal-text";
-                  document.getElementById("line-2").appendChild(contact);
-                  contact.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
-
-                  setTimeout(function () {
-                    window.location.href = "contact.html";
+                    if (value === "home") {
+                      window.location.href = `index.html`;
+                    } else {
+                      window.location.href = `terminal/${value}.html`;
+                    }
                   }, 5000);
                 } else if (
                   document.getElementById(`input-${counter}`).value === "whoami"
@@ -265,7 +243,7 @@
                   document.getElementById("line-2").appendChild(contact);
 
                   setTimeout(function () {
-                    window.location.href = "about.html";
+                    window.location.href = "terminal/about.html";
                   }, 3000);
                 } else if (
                   document.getElementById(`input-${counter}`).value === "ls"

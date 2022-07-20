@@ -148,6 +148,7 @@
             var counter = sessionStorage.getItem("counter");
             counter = parseInt(counter);
             var inputWithCounter = `input-${counter + 1}`;
+            var deactivateInput = true;
 
             document
               .getElementById(`input-${counter}`)
@@ -160,81 +161,62 @@
                   document.getElementById(`input-${counter}`).value === "help"
                 ) {
                   const help = document.createElement("p");
-                  help.innerHTML = `<span class="terminal-text-highlighted">help</span> - shows this help message<br />`;
+                  help.innerHTML = `<span class="terminal-text-highlighted">help</span> - shows this help message<br /><br />`;
+
+                  help.innerHTML += `<span class="terminal-text-highlighted">home</span> - shows home tab<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">about</span> - shows information about me<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">projects</span> - shows my projects<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">blog</span> - shows my blog<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">contact</span> - shows my contact informations<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">clear</span> - clears the terminal (soon)<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">exit</span> - exits the terminal (soon)<br /><br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">ls </span> - list files and folder in current directory<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">github <project></span> - opens github repository`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">contact</span> - shows my contact informations<br /><br />`;
+
+                  help.innerHTML += `<span class="terminal-text-highlighted">whoami</span> - Figure it out😉<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">github &lt;command&gt; <project></span> - opens github repository<br /><br />`;
+
+                  help.innerHTML += `<span class="terminal-text-highlighted">ls</span> - lists all files and folders current directory<br /><br />`;
+
+                  help.innerHTML += `<span class="terminal-text-highlighted">clear</span> - clears terminal<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">exit</span> - close terminal`;
                   help.className = "terminal-text";
                   document.getElementById("line-2").appendChild(help);
                   makeBr = false;
                 } else if (
-                  document.getElementById(`input-${counter}`).value === "about"
+                  document.getElementById(`input-${counter}`).value ===
+                    "home" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "about" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "projects" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "blog" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "contact"
                 ) {
-                  const about = document.createElement("p");
-                  about.innerHTML = `<span style="color:orange">Warning: </span>An instance of about is already running. You will be redirected...`;
+                  var value = document.getElementById(`input-${counter}`).value;
+                  const about = document.createElement("div");
+                  about.innerHTML = `<span style="color:orange">Warning: </span>An instance of ${value} is already running. You will be redirected...`;
                   about.className = "terminal-text";
                   document.getElementById("line-2").appendChild(about);
                   about.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
 
                   setTimeout(function () {
-                    window.location.href = "about.html";
+                    if (value === "home") {
+                      window.location.href = `../index.html`;
+                    } else {
+                      window.location.href = `${value}.html`;
+                    }
                   }, 5000);
-                } else if (
-                  document.getElementById(`input-${counter}`).value ===
-                  "projects"
+                }  else if (
+                  document.getElementById(`input-${counter}`).value === "whoami"
                 ) {
-                  const projects = document.createElement("p");
-                  projects.innerHTML = `<span style="color:orange">Warning: </span>An instance of projects is already running. You will be redirected...`;
-                  projects.className = "terminal-text";
-                  document.getElementById("line-2").appendChild(projects);
-                  projects.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
-
-                  setTimeout(function () {
-                    window.location.href = "projects.html";
-                  }, 5000);
-                } else if (
-                  document.getElementById(`input-${counter}`).value === "blog"
-                ) {
-                  const blog = document.createElement("p");
-                  blog.innerHTML = `<span style="color:orange">Warning: </span>An instance of blog is already running. You will be redirected...`;
-                  blog.className = "terminal-text";
-                  document.getElementById("line-2").appendChild(blog);
-                  blog.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
-
-                  setTimeout(function () {
-                    window.location.href = "blog.html";
-                  }, 5000);
-                } else if (
-                  document.getElementById(`input-${counter}`).value ===
-                  "contact"
-                ) {
-                  const contact = document.createElement("p");
-                  contact.innerHTML = `<span style="color:orange">Warning: </span>An instance of contact is already running. You will be redirected...`;
+                  const contact = document.createElement("div");
+                  contact.innerHTML = `3...2...1...`;
                   contact.className = "terminal-text";
                   document.getElementById("line-2").appendChild(contact);
-                  contact.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
 
                   setTimeout(function () {
-                    window.location.href = "contact.html";
-                  }, 5000);
-                }  else if (
-                  document.getElementById(`input-${counter}`).value ===
-                  "ls"
-                ) {
-                  const projects = document.createElement("table");
-                  
-                  projects.innerHTML = `<tr><td>gas3</td><td>Joy-it-Grab-it-robot02-backend</td><td>Joy-it-Grab-it-robot02-frontend</td></tr>`;
-                  projects.innerHTML += `<tr><td>missionchief credit farm bot (german game version)</td><td>Personal portfolio</td><td>SOL-Connect</td></tr>`;
-                  
-                  projects.style.width = "100%";
-                  projects.style.color = "#60fdff";
-                  document.getElementById("line-2").appendChild(projects);
-                }  else if (
+                    window.location.href = "about.html";
+                  }, 3000);
+                } else if (
                   document.getElementById(`input-${counter}`).value.split(" ")[0] ===
                   "github"
                 ) {
@@ -262,6 +244,43 @@
                   }
 
                   
+                } else if (
+                  document.getElementById(`input-${counter}`).value === "ls"
+                ) {
+                  const projects = document.createElement("table");
+
+                  projects.innerHTML = `<tr><td>home</td><td>about</td><td>projects</td></tr>`;
+                  projects.innerHTML += `<tr><td>blog</td><td>contact</td><td>resume</td></tr>`;
+
+                  projects.style.width = "100%";
+                  projects.style.color = "#60fdff";
+                  document.getElementById("line-2").appendChild(projects);
+
+                  var line2 = document.createElement("div");
+                  line2.id = "line-2";
+                  document.getElementById("line-1").appendChild(line2);
+                }
+                else if (
+                  document.getElementById(`input-${counter}`).value === "clear"
+                ) {
+                   var element = document.getElementById("line-2");
+                  element.parentNode.removeChild(element);
+
+                  var line2 = document.createElement("div");
+                  line2.id = "line-2";
+                  document.getElementById("typewriter").appendChild(line2);
+
+                  line2Padding = document.createElement("div");
+                  line2Padding.style.paddingTop = "15px";
+                  document.getElementById("line-2").appendChild(line2Padding);
+
+                  deactivateInput = false;
+                }
+                else if (
+                  document.getElementById(`input-${counter}`).value === "exit"
+                ) {
+                  window.location.href = "/desktop/desktop.html";
+                  return;
                 } else {
                   const notFound = document.createElement("div");
                   notFound.innerHTML = `<span class="terminal-text-highlighted">${
@@ -269,11 +288,13 @@
                   }</span> - command not found`;
                   notFound.className = "terminal-text";
                   document.getElementById("line-2").appendChild(notFound);
-                }
+                } 
 
-                const input = (document.getElementById(
-                  `input-${counter}`
-                ).disabled = true);
+                if (deactivateInput) {
+                  const input = (document.getElementById(
+                    `input-${counter}`
+                  ).disabled = true);
+                }
 
                 const nextLine2 = document.createElement("span");
                 nextLine2.className = "terminal-text-highlighted";
