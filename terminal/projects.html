@@ -113,6 +113,10 @@
       <span class="terminal-text-highlighted">]</span>
       <span>⚡️</span>
       <span id="typewriter"></span>
+      <span id="typewriter-text" style="display: none;">
+      <span class="terminal-text-highlighted">make </span>
+      <span class="terminal-text">projects</span>
+      </span>
       <script type="text/javascript">
         const typewriter = new Typewriter("#typewriter", {
           loop: false,
@@ -125,9 +129,8 @@
           .start();
 
         setTimeout(function () {
-          // set cursor color to transparent, because i can't delete it
-          document.querySelector(".Typewriter__cursor").style.backgroundColor =
-            "transparent";
+          document.getElementById("typewriter").style.display = "none";
+          document.getElementById("typewriter-text").style.display = "inline";
           document.getElementById("line-2").style.display = "block";
           document.getElementById("input-0").focus();
         }, 2000);
