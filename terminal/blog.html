@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script type="text/javascript">
+      sessionStorage.setItem("counter", 0);
+    </script>
     <title>Florian Schmitz</title>
   </head>
 
   <body>
     <!-- Navbar -->
     <div class="terminal-window">
-      <a class="terminal-window-close-button" href="../desktop/desktop.html"></a>
+      <a
+        class="terminal-window-close-button"
+        href="../desktop/desktop.html"
+      ></a>
       <div
         class="terminal-window-button"
         style="background-color: #febc30"
@@ -123,6 +129,7 @@
           document.querySelector(".Typewriter__cursor").style.backgroundColor =
             "transparent";
           document.getElementById("line-2").style.display = "block";
+          document.getElementById("input-0").focus();
         }, 2000);
       </script>
       <div id="line-2" style="display: none">
@@ -140,6 +147,199 @@
         <span style="color: #60fdff">main</span>
         <span class="terminal-text-highlighted">]</span>
         <span>⚡️</span>
+        <input
+          class="input-0"
+          id="input-0"
+          autocomplete="off"
+          placeholder="help"
+        />
+        <script>
+          async function createElements() {
+            var counter = sessionStorage.getItem("counter");
+            counter = parseInt(counter);
+            var inputWithCounter = `input-${counter + 1}`;
+            var deactivateInput = true;
+
+            document
+              .getElementById(`input-${counter}`)
+              .addEventListener("keydown", (e) => {
+                if (e.key !== "Enter") {
+                  return;
+                }
+
+                if (
+                  document.getElementById(`input-${counter}`).value === "help"
+                ) {
+                  const help = document.createElement("p");
+                  help.innerHTML = `<span class="terminal-text-highlighted">help</span> - shows this help message<br /><br />`;
+
+                  help.innerHTML += `<span class="terminal-text-highlighted">home</span> - shows home tab<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">about</span> - shows information about me<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">projects</span> - shows my projects<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">blog</span> - shows my blog<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">contact</span> - shows my contact informations<br /><br />`;
+
+                  help.innerHTML += `<span class="terminal-text-highlighted">whoami</span> - Figure it out😉<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">github &lt;command&gt; <project></span> - opens github repository<br /><br />`;
+
+                  help.innerHTML += `<span class="terminal-text-highlighted">ls</span> - lists all files and folders current directory<br /><br />`;
+
+                  help.innerHTML += `<span class="terminal-text-highlighted">clear</span> - clears terminal<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">exit</span> - close terminal`;
+                  help.className = "terminal-text";
+                  document.getElementById("line-2").appendChild(help);
+                  makeBr = false;
+                } else if (
+                  document.getElementById(`input-${counter}`).value ===
+                    "home" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "about" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "projects" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "blog" ||
+                  document.getElementById(`input-${counter}`).value ===
+                    "contact"
+                ) {
+                  var value = document.getElementById(`input-${counter}`).value;
+                  const about = document.createElement("div");
+                  about.innerHTML = `<span style="color:orange">Warning: </span>An instance of ${value} is already running. You will be redirected...`;
+                  about.className = "terminal-text";
+                  document.getElementById("line-2").appendChild(about);
+                  about.innerHTML += `<br /><span style="color:red">Error: </span>An error has occurred. You have to restart it with our <span class="terminal-text-highlighted">make</span> command.`;
+
+                  setTimeout(function () {
+                    if (value === "home") {
+                      window.location.href = `../index.html`;
+                    } else {
+                      window.location.href = `${value}.html`;
+                    }
+                  }, 5000);
+                } else if (
+                  document.getElementById(`input-${counter}`).value === "whoami"
+                ) {
+                  const contact = document.createElement("div");
+                  contact.innerHTML = `3...2...1...`;
+                  contact.className = "terminal-text";
+                  document.getElementById("line-2").appendChild(contact);
+
+                  setTimeout(function () {
+                    window.location.href = "about.html";
+                  }, 3000);
+                } else if (
+                  document
+                    .getElementById(`input-${counter}`)
+                    .value.split(" ")[0] === "github"
+                ) {
+                  var projectString = document
+                    .getElementById(`input-${counter}`)
+                    .value.split(" ")[1];
+
+                  if (projectString === undefined) {
+                    const github = document.createElement("p");
+                    github.innerHTML = `<span style="color:red">Error: </span>You have to specify a project.`;
+                    github.className = "terminal-text";
+                    document.getElementById("line-2").appendChild(github);
+                  } else if (projectString === "missionchief") {
+                    window
+                      .open(
+                        `https://github.com/floodoo/Leitstellenspiel_Bot`,
+                        "_blank"
+                      )
+                      .focus();
+                    document
+                      .getElementById("line-2")
+                      .appendChild(document.createElement("br"));
+                  } else if (projectString === "personal") {
+                    window
+                      .open(
+                        `https://github.com/floodoo/portfolio-terminal-style`,
+                        "_blank"
+                      )
+                      .focus();
+                    document
+                      .getElementById("line-2")
+                      .appendChild(document.createElement("br"));
+                  } else {
+                    window
+                      .open(
+                        `https://github.com/floodoo/${projectString.toLowerCase()}`,
+                        "_blank"
+                      )
+                      .focus();
+                    document
+                      .getElementById("line-2")
+                      .appendChild(document.createElement("br"));
+                  }
+                } else if (
+                  document.getElementById(`input-${counter}`).value === "ls"
+                ) {
+                  const projects = document.createElement("table");
+
+                  projects.innerHTML = `<tr><td>blog-german</td><td>blog-english</td></tr>`;
+
+                  projects.style.width = "100%";
+                  projects.style.color = "#60fdff";
+                  document.getElementById("line-2").appendChild(projects);
+                } else if (
+                  document.getElementById(`input-${counter}`).value === "clear"
+                ) {
+                  var element = document.getElementById("line-2");
+                  element.parentNode.removeChild(element);
+
+                  var line2 = document.createElement("div");
+                  line2.id = "line-2";
+                  document.getElementById("typewriter").appendChild(line2);
+
+                  line2Padding = document.createElement("div");
+                  line2Padding.style.paddingTop = "15px";
+                  document.getElementById("line-2").appendChild(line2Padding);
+
+                  deactivateInput = false;
+                } else if (
+                  document.getElementById(`input-${counter}`).value === "exit"
+                ) {
+                  window.location.href = "/desktop/desktop.html";
+                  return;
+                } else {
+                  const notFound = document.createElement("div");
+                  notFound.innerHTML = `<span class="terminal-text-highlighted">${
+                    document.getElementById(`input-${counter}`).value
+                  }</span> - command not found`;
+                  notFound.className = "terminal-text";
+                  document.getElementById("line-2").appendChild(notFound);
+                }
+
+                if (deactivateInput) {
+                  const input = (document.getElementById(
+                    `input-${counter}`
+                  ).disabled = true);
+                }
+
+                const nextLine2 = document.createElement("span");
+                nextLine2.className = "terminal-text-highlighted";
+                nextLine2.innerHTML = "portfolio ";
+                document.getElementById("line-2").appendChild(nextLine2);
+
+                const nextLine3 = document.createElement("span");
+                nextLine3.innerHTML = "⚡️";
+                document.getElementById("line-2").appendChild(nextLine3);
+
+                const nextLine4 = document.createElement("input");
+                nextLine4.className = inputWithCounter;
+                nextLine4.id = inputWithCounter;
+                nextLine4.autoComplete = "off";
+                document.getElementById("line-2").appendChild(nextLine4);
+                document.getElementById(inputWithCounter).focus();
+
+                counter++;
+                sessionStorage.setItem("counter", counter);
+
+                createElements();
+              });
+          }
+          createElements();
+        </script>
       </div>
     </div>
   </body>
