@@ -53,8 +53,6 @@ body {
 .terminal-window-close-button:hover::after {
     color: black;
     content: "x";
-    /* center content */
-
     display: block;
     position: absolute;
     top: 50%;
@@ -73,7 +71,7 @@ body {
 nav {
     display: grid;
     grid-gap: 1px;
-    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-columns: 19.4% 19.4% 19.4% 19.4% 19.4% 3%;
     padding-top: 30px;
     background-color: #454545;
 }
@@ -92,6 +90,28 @@ nav {
     padding: 10px;
     font-size: 100%;
     text-decoration: none;
+}
+
+.nav-add-button {
+    background-color: #252425;
+    color: #B5B5B5;
+    font-size: 20px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-more-button {
+    background-color: #252425;
+    color: #B5B5B5;
+    font-size: 10px;
+    text-decoration: none;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-button-text:after {
@@ -142,4 +162,33 @@ form {
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .nav-add-button {
+    display: none;
+  }
+    .nav-more-button {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 250px) {
+    #contact {
+        display: none;
+    }
+
+    nav {
+        grid-template-columns: 24.4% 24.4% 24.4% 24.4% 2.4%;
+    }
+}
+
+@media screen and (max-width: 230px) {
+    #blog {
+        display: none;
+    }
+
+    nav {
+        grid-template-columns: 33%, 33%, 33%, 1%;
+    }
 }
