@@ -29,36 +29,63 @@
       <div class="terminal-window-name">florianschmitz@MacBook-Pro:~</div>
     </div>
     <nav>
-      <a class="nav-button" data-hotkey="Meta+1" href="../index.html">
+      <a
+        id="home"
+        class="nav-button"
+        data-hotkey="Meta+1"
+        href="../index.html"
+      >
         <ul>
           <li class="nav-button-text">~</li>
           <li>⌘1</li>
         </ul>
       </a>
-      <a class="nav-button" data-hotkey="Meta+2" href="about.html">
+      <a
+        id="about"
+        class="nav-button"
+        data-hotkey="Meta+2"
+        href="about.html"
+      >
         <ul>
           <li class="nav-button-text">About</li>
           <li>⌘2</li>
         </ul>
       </a>
-      <a class="nav-button" data-hotkey="Meta+3" href="projects.html">
+      <a
+        id="projects"
+        class="nav-button"
+        data-hotkey="Meta+3"
+        href="projects.html"
+      >
         <ul>
           <li class="nav-button-text">Projects</li>
           <li>⌘3</li>
         </ul>
       </a>
-      <a class="nav-button" data-hotkey="Meta+4" href="blog.html">
+      <a
+        id="blog"
+        class="nav-button"
+        data-hotkey="Meta+4"
+        href="blog.html"
+      >
         <ul>
           <li class="nav-button-text">Blog</li>
           <li>⌘4</li>
         </ul>
       </a>
-      <a class="nav-button-active" data-hotkey="Meta+5" href="contact.html">
+      <a
+        id="contact"
+        class="nav-button-active"
+        data-hotkey="Meta+5"
+        href="contact.html"
+      >
         <ul>
           <li class="nav-button-text">Contact</li>
           <li>⌘5</li>
         </ul>
       </a>
+      <span class="nav-add-button">+</span>
+      <span class="nav-more-button">&gt;&gt;</span>
     </nav>
     <script>
       document.addEventListener("keydown", (keyboardEvent) => {
@@ -168,7 +195,11 @@
                   return;
                 }
 
-                if (
+                if (document.getElementById(`input-${counter}`).value === "") {
+                  document
+                    .getElementById("line-2")
+                    .appendChild(document.createElement("div"));
+                } else if (
                   document.getElementById(`input-${counter}`).value === "help"
                 ) {
                   const help = document.createElement("p");
