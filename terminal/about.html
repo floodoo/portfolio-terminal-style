@@ -85,6 +85,7 @@
         </ul>
       </a>
       <span class="nav-add-button">+</span>
+      <span class="nav-menu-button">&gt;&gt;</span>
     </nav>
     <script>
       document.addEventListener("keydown", (keyboardEvent) => {
@@ -163,7 +164,7 @@
         <br />
         <span id="age"></span>
         <br />
-        <span id="experience"> </span>
+        <span id="experience">Experience: +3 years</span>
         <br /><br />
         <span>This is how I look like in terminal style haha🤓</span>
       </p>
@@ -223,11 +224,20 @@
         <span>Dart</span>
         <br />
         <span>Python</span>
+        <br />
+        <span>JavaScript</span>
       </p>
       <p>
         <span>Frameworks:</span>
         <br />
         <span>Flutter</span>
+      </p>
+      <p>
+        <span>Markup languages and stylesheets</span>
+        <br />
+        <span>Html</span>
+        <br />
+        <span>Css</span>
       </p>
       <script>
         function calculateAge() {
@@ -236,33 +246,7 @@
 
           return Math.abs(age_dt.getUTCFullYear() - 1970);
         }
-
-        function calculateExperience() {
-          var difference =
-            new Date().getTime() -
-            //This date is the creation date of my first python script. Probably not my first line of code but the first file that i found on my backup.
-            new Date(2019, 11, 14, 10, 43, 54).getTime();
-
-          var years = Math.floor(difference / (1000 * 60 * 60 * 24 * 365));
-          difference = difference % (1000 * 60 * 60 * 24 * 365);
-          var months = Math.floor(
-            difference / (1000 * 60 * 60 * 24 * 30.42)
-          );
-          difference = difference % (1000 * 60 * 60 * 24 * 30.42);
-          var days = Math.floor(difference / (1000 * 60 * 60 * 24));
-          difference = difference % (1000 * 60 * 60 * 24);
-          var hours = Math.floor(difference / (1000 * 60 * 60));
-          difference = difference % (1000 * 60 * 60);
-          var minutes = Math.floor(difference / (1000 * 60));
-          difference = difference % (1000 * 60);
-          var seconds = Math.floor(difference / 1000);
-
-          return `${years} years, ${months} months, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
-
-        }
-
         document.getElementById("age").innerHTML = "Age: " + calculateAge();
-        document.getElementById("experience").innerHTML = "Experience since: " + calculateExperience();
       </script>
       <span class="terminal-text-highlighted">portfolio </span>
           <span>⚡️</span>
