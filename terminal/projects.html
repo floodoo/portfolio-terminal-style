@@ -139,38 +139,20 @@
       <span style="color: #60fdff">main</span>
       <span class="terminal-text-highlighted">]</span>
       <span>⚡️</span>
-      <span id="typewriter"></span>
-      <span id="typewriter-text" style="display: none;">
+      <span id="typewriter-text">
       <span class="terminal-text-highlighted">make </span>
-      <span class="terminal-text">projects</span>
+      <span class="terminal-text">portfolio</span>
       </span>
-      <script type="text/javascript">
-        const typewriter = new Typewriter("#typewriter", {
-          loop: false,
-          delay: 100,
-        });
-
-        typewriter
-          .typeString('<span class="terminal-text-highlighted">make </span>')
-          .typeString('<span class="terminal-text">projects</span>')
-          .start();
-
-        setTimeout(function () {
-          document.getElementById("typewriter").style.display = "none";
-          document.getElementById("typewriter-text").style.display = "inline";
-          document.getElementById("line-2").style.display = "block";
-          document.getElementById("input-0").focus();
-        }, 2000);
-      </script>
-      <div id="line-2" style="display: none">
-        <div style="padding-top: 15px">
+      <div id="line-2">
+        <div style="padding-top: 6px">
           <span class="terminal-text-highlighted">portfolio </span>
           <span>⚡️</span>
           <input
-            class="input-0"
-            id="input-0"
-            autocomplete="off"
-            placeholder="help"
+          class="input-0"
+          id="input-0"
+          autocomplete="off"
+          placeholder="help"
+          autofocus
           />
         </div>
         <script>

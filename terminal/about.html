@@ -124,20 +124,20 @@
     <span class="terminal-text-highlighted">~ </span>
     <span class="terminal-text-highlighted">cd </span>
     <span class="terminal-text">development/portfolio</span>
-    <span id="onRemove"></span>
-    <div id="line-1">
-    <img src="assets/images/terminal-symbol.svg" alt="terminal new line symbol"
-      style="padding-right: 4px; padding-top: 15px" />
-
+    <div style="padding-top: 5px"></div>
+    <img src="assets/images/terminal-symbol.svg" alt="terminal new line symbol" style="padding-right: 4px" />
     <span class="terminal-text-highlighted">portfolio [</span>
     <span style="color: #60fdff">main</span>
     <span class="terminal-text-highlighted">]</span>
     <span>⚡️</span>
-    <span id="typewriter"></span>
-    <span id="typewriter-text" style="display: none;">
     <span class="terminal-text-highlighted">make </span>
-    <span class="terminal-text">about</span>
-  </span>
+    <span class="terminal-text">portfolio</span>
+    <span id="onRemove"></span>
+    <div id="line-1" style="padding-top: 6px">
+    <span class="terminal-text-highlighted">portfolio</span>
+    <span>⚡️</span>
+    <span id="typewriter"></span>
+    <span id="typewriter-text" class="terminal-text-highlighted" style="display: none;">quickfacts</span>
     <script type="text/javascript">
       const typewriter = new Typewriter("#typewriter", {
         loop: false,
@@ -145,8 +145,7 @@
       });
 
       typewriter
-        .typeString('<span class="terminal-text-highlighted">make </span>')
-        .typeString('<span class="terminal-text">about</span>')
+        .typeString('<span class="terminal-text-highlighted">quickfacts</span>')
         .start();
 
       setTimeout(function () {

@@ -28,14 +28,24 @@
       ></div>
       <div class="terminal-window-name">florianschmitz@MacBook-Pro:~</div>
     </div>
-    <nav>
-      <a id="home" class="nav-button" data-hotkey="Meta+1" href="../index.html">
+   <nav>
+      <a
+        id="home"
+        class="nav-button"
+        data-hotkey="Meta+1"
+        href="../index.html"
+      >
         <ul>
           <li class="nav-button-text">~</li>
           <li>⌘1</li>
         </ul>
       </a>
-      <a id="about" class="nav-button" data-hotkey="Meta+2" href="about.html">
+      <a
+        id="about"
+        class="nav-button"
+        data-hotkey="Meta+2"
+        href="about.html"
+      >
         <ul>
           <li class="nav-button-text">About</li>
           <li>⌘2</li>
@@ -129,50 +139,22 @@
       <span style="color: #60fdff">main</span>
       <span class="terminal-text-highlighted">]</span>
       <span>⚡️</span>
-      <span id="typewriter"></span>
-      <span id="typewriter-text" style="display: none">
-        <span class="terminal-text-highlighted">make </span>
-        <span class="terminal-text">blog</span>
+      <span id="typewriter-text">
+      <span class="terminal-text-highlighted">make </span>
+      <span class="terminal-text">portfolio</span>
       </span>
-      <script type="text/javascript">
-        const typewriter = new Typewriter("#typewriter", {
-          loop: false,
-          delay: 100,
-        });
-
-        typewriter
-          .typeString('<span class="terminal-text-highlighted">make </span>')
-          .typeString('<span class="terminal-text">blog</span>')
-          .start();
-
-        setTimeout(function () {
-          document.getElementById("typewriter").style.display = "none";
-          document.getElementById("typewriter-text").style.display = "inline";
-          document.getElementById("line-2").style.display = "block";
-          document.getElementById("input-0").focus();
-        }, 2000);
-      </script>
-      <div id="line-2" style="display: none">
-        <div class="terminal-text">Weird, there's nothing going on here...</div>
-        <div class="terminal-text">
-          I'm going to <span style="color: red">report</span> this.
-        </div>
-
-        <img
-          src="assets/images/terminal-symbol.svg"
-          alt="terminal new line symbol"
-          style="padding-right: 4px; padding-top: 15px"
-        />
-        <span class="terminal-text-highlighted">portfolio [</span>
-        <span style="color: #60fdff">main</span>
-        <span class="terminal-text-highlighted">]</span>
-        <span>⚡️</span>
-        <input
+      <div id="line-2">
+        <div style="padding-top: 6px">
+          <span class="terminal-text-highlighted">portfolio </span>
+          <span>⚡️</span>
+          <input
           class="input-0"
           id="input-0"
           autocomplete="off"
           placeholder="help"
-        />
+          autofocus
+          />
+        </div>
         <script>
           async function createElements() {
             var counter = sessionStorage.getItem("counter");
@@ -187,7 +169,7 @@
                   return;
                 }
 
-                if (document.getElementById(`input-${counter}`).value === "") {
+               if (document.getElementById(`input-${counter}`).value === "") {
                   document
                     .getElementById("line-2")
                     .appendChild(document.createElement("div"));
@@ -204,7 +186,6 @@
                   help.innerHTML += `<span class="terminal-text-highlighted">contact</span> - shows my contact informations<br /><br />`;
 
                   help.innerHTML += `<span class="terminal-text-highlighted">whoami</span> - Figure it out😉<br />`;
-                  help.innerHTML += `<span class="terminal-text-highlighted">github &lt;command&gt; <project></span> - opens github repository<br /><br />`;
 
                   help.innerHTML += `<span class="terminal-text-highlighted">ls</span> - lists all files and folders current directory<br /><br />`;
 
@@ -239,7 +220,7 @@
                       window.location.href = `${value}.html`;
                     }
                   }, 5000);
-                } else if (
+                }  else if (
                   document.getElementById(`input-${counter}`).value === "whoami"
                 ) {
                   const contact = document.createElement("div");
@@ -251,64 +232,21 @@
                     window.location.href = "about.html";
                   }, 3000);
                 } else if (
-                  document
-                    .getElementById(`input-${counter}`)
-                    .value.split(" ")[0] === "github"
-                ) {
-                  var projectString = document
-                    .getElementById(`input-${counter}`)
-                    .value.split(" ")[1];
-
-                  if (projectString === undefined) {
-                    const github = document.createElement("p");
-                    github.innerHTML = `<span style="color:red">Error: </span>You have to specify a project.`;
-                    github.className = "terminal-text";
-                    document.getElementById("line-2").appendChild(github);
-                  } else if (projectString === "missionchief") {
-                    window
-                      .open(
-                        `https://github.com/floodoo/Leitstellenspiel_Bot`,
-                        "_blank"
-                      )
-                      .focus();
-                    document
-                      .getElementById("line-2")
-                      .appendChild(document.createElement("br"));
-                  } else if (projectString === "personal") {
-                    window
-                      .open(
-                        `https://github.com/floodoo/portfolio-terminal-style`,
-                        "_blank"
-                      )
-                      .focus();
-                    document
-                      .getElementById("line-2")
-                      .appendChild(document.createElement("br"));
-                  } else {
-                    window
-                      .open(
-                        `https://github.com/floodoo/${projectString.toLowerCase()}`,
-                        "_blank"
-                      )
-                      .focus();
-                    document
-                      .getElementById("line-2")
-                      .appendChild(document.createElement("br"));
-                  }
-                } else if (
                   document.getElementById(`input-${counter}`).value === "ls"
                 ) {
                   const projects = document.createElement("table");
 
-                  projects.innerHTML = `<tr><td>blog-german</td><td>blog-english</td></tr>`;
+                  projects.innerHTML = `<tr><td>home</td><td>about</td><td>projects</td></tr>`;
+                  projects.innerHTML += `<tr><td>blog</td><td>contact</td><td>resume</td></tr>`;
 
                   projects.style.width = "100%";
                   projects.style.color = "#60fdff";
                   document.getElementById("line-2").appendChild(projects);
-                } else if (
+                }
+                else if (
                   document.getElementById(`input-${counter}`).value === "clear"
                 ) {
-                  var element = document.getElementById("line-2");
+                   var element = document.getElementById("line-2");
                   element.parentNode.removeChild(element);
 
                   var line2 = document.createElement("div");
@@ -320,7 +258,8 @@
                   document.getElementById("line-2").appendChild(line2Padding);
 
                   deactivateInput = false;
-                } else if (
+                }
+                else if (
                   document.getElementById(`input-${counter}`).value === "exit"
                 ) {
                   window.location.href = "/desktop/desktop.html";
@@ -332,7 +271,7 @@
                   }</span> - command not found`;
                   notFound.className = "terminal-text";
                   document.getElementById("line-2").appendChild(notFound);
-                }
+                } 
 
                 if (deactivateInput) {
                   const input = (document.getElementById(
@@ -365,6 +304,7 @@
           createElements();
         </script>
       </div>
+    </div>
     </div>
   </body>
 </html>
