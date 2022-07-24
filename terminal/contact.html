@@ -28,7 +28,7 @@
       ></div>
       <div class="terminal-window-name">florianschmitz@MacBook-Pro:~</div>
     </div>
-   <nav>
+    <nav>
       <a
         id="home"
         class="nav-button"
@@ -112,50 +112,71 @@
         });
       });
     </script>
-    <!-- End of navbar -->
-    <div style="padding-left: 15px">
-      <div class="terminal-text" id="last-login"></div>
-      <script>
-        document.getElementById(
-          "last-login"
-        ).innerHTML = `Last login: ${new Date().toLocaleString()} on ttys000`;
-      </script>
-      <img
-        src="assets/images/terminal-symbol.svg"
-        alt="terminal new line symbol"
-        style="padding-right: 4px"
-      />
-      <span class="terminal-text-highlighted">~ </span>
-      <span class="terminal-text-highlighted">cd </span>
-      <span class="terminal-text">development/portfolio</span>
-      <div></div>
-      <img
-        src="assets/images/terminal-symbol.svg"
-        alt="terminal new line symbol"
-        style="padding-right: 4px; padding-top: 15px"
-      />
+    <!-- End of Navbar -->
+  <div style="padding-left: 15px">
+    <div class="terminal-text" id="last-login"></div>
+    <script>
+      document.getElementById(
+        "last-login"
+      ).innerHTML = `Last login: ${new Date().toLocaleString()} on ttys000`;
+    </script>
+    <img src="assets/images/terminal-symbol.svg" alt="terminal new line symbol" style="padding-right: 4px" />
+    <span class="terminal-text-highlighted">~ </span>
+    <span class="terminal-text-highlighted">cd </span>
+    <span class="terminal-text">development/portfolio</span>
+    <div style="padding-top: 5px"></div>
+    <img src="assets/images/terminal-symbol.svg" alt="terminal new line symbol" style="padding-right: 4px" />
+    <span class="terminal-text-highlighted">portfolio [</span>
+    <span style="color: #60fdff">main</span>
+    <span class="terminal-text-highlighted">]</span>
+    <span>⚡️</span>
+    <span class="terminal-text-highlighted">make </span>
+    <span class="terminal-text">portfolio</span>
+    <span id="onRemove"></span>
+    <div id="line-1" style="padding-top: 6px">
+    <span class="terminal-text-highlighted">portfolio</span>
+    <span>⚡️</span>
+    <span id="typewriter"></span>
+    <span id="typewriter-text" class="terminal-text-highlighted" style="display: none;">contact</span>
+    <script type="text/javascript">
+      const typewriter = new Typewriter("#typewriter", {
+        loop: false,
+        delay: 100,
+      });
 
-      <span class="terminal-text-highlighted">portfolio [</span>
-      <span style="color: #60fdff">main</span>
-      <span class="terminal-text-highlighted">]</span>
-      <span>⚡️</span>
-      <span id="typewriter-text">
-      <span class="terminal-text-highlighted">make </span>
-      <span class="terminal-text">portfolio</span>
-      </span>
-      <div id="line-2">
-        <div style="padding-top: 6px">
-          <span class="terminal-text-highlighted">portfolio </span>
+      typewriter
+        .typeString('<span class="terminal-text-highlighted">contact</span>')
+        .start();
+
+      setTimeout(function () {
+        document.getElementById("typewriter").style.display = "none";
+        document.getElementById("typewriter-text").style.display = "inline";
+        document.getElementById("line-2").style.display = "block";
+        document.getElementById("input-0").focus();
+      }, 2000);
+    </script>
+    <div id="line-2" style="display: none">
+      <p>contact@flo-dev.me</p>
+  
+      <script>
+        function calculateAge() {
+          var diff_ms = Date.now() - new Date(2003, 5, 7).getTime();
+          var age_dt = new Date(diff_ms);
+
+          return Math.abs(age_dt.getUTCFullYear() - 1970);
+        }
+        document.getElementById("age").innerHTML = "Age: " + calculateAge();
+      </script>
+      <span class="terminal-text-highlighted">portfolio </span>
           <span>⚡️</span>
           <input
-          class="input-0"
-          id="input-0"
-          autocomplete="off"
-          placeholder="help"
-          autofocus
+            class="input-0"
+            id="input-0"
+            autocomplete="off"
+            placeholder="help"
           />
-        </div>
-        <script>
+    </div>
+       <script>
           async function createElements() {
             var counter = sessionStorage.getItem("counter");
             counter = parseInt(counter);
@@ -176,8 +197,8 @@
                 } else if (
                   document.getElementById(`input-${counter}`).value === "help"
                 ) {
-                  const help = document.createElement("p");
-                  help.innerHTML = `<span class="terminal-text-highlighted">help</span> - shows this help message<br /><br />`;
+                  const help = document.createElement("div");
+                   help.innerHTML = `<span class="terminal-text-highlighted">help</span> - shows this help message<br /><br />`;
 
                   help.innerHTML += `<span class="terminal-text-highlighted">home</span> - shows home tab<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">about</span> - shows information about me<br />`;
@@ -185,7 +206,7 @@
                   help.innerHTML += `<span class="terminal-text-highlighted">blog</span> - shows my blog<br />`;
                   help.innerHTML += `<span class="terminal-text-highlighted">contact</span> - shows my contact informations<br /><br />`;
 
-                  help.innerHTML += `<span class="terminal-text-highlighted">whoami</span> - Figure it out😉<br />`;
+                  help.innerHTML += `<span class="terminal-text-highlighted">whoami</span> - Figure it out😉<br /><br />`;
 
                   help.innerHTML += `<span class="terminal-text-highlighted">ls</span> - lists all files and folders current directory<br /><br />`;
 
@@ -220,7 +241,7 @@
                       window.location.href = `${value}.html`;
                     }
                   }, 5000);
-                }  else if (
+                } else if (
                   document.getElementById(`input-${counter}`).value === "whoami"
                 ) {
                   const contact = document.createElement("div");
@@ -242,11 +263,15 @@
                   projects.style.width = "100%";
                   projects.style.color = "#60fdff";
                   document.getElementById("line-2").appendChild(projects);
+
+                  var line2 = document.createElement("div");
+                  line2.id = "line-2";
+                  document.getElementById("line-1").appendChild(line2);
                 }
                 else if (
                   document.getElementById(`input-${counter}`).value === "clear"
                 ) {
-                   var element = document.getElementById("line-2");
+                  var element = document.getElementById("line-2");
                   element.parentNode.removeChild(element);
 
                   var line2 = document.createElement("div");
@@ -271,7 +296,7 @@
                   }</span> - command not found`;
                   notFound.className = "terminal-text";
                   document.getElementById("line-2").appendChild(notFound);
-                } 
+                }
 
                 if (deactivateInput) {
                   const input = (document.getElementById(
@@ -303,8 +328,8 @@
           }
           createElements();
         </script>
-      </div>
     </div>
-    </div>
-  </body>
+  </div>
+  </div>
+</body>
 </html>

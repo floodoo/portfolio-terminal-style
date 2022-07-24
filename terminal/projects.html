@@ -264,9 +264,12 @@
                   document.getElementById(`input-${counter}`).value === "ls"
                 ) {
                   const projects = document.createElement("table");
-
-                  projects.innerHTML = `<tr><td>home</td><td>about</td><td>projects</td></tr>`;
-                  projects.innerHTML += `<tr><td>blog</td><td>contact</td><td>resume</td></tr>`;
+                  projects.innerHTML = `<p>Personal projects</p>`;
+                  projects.innerHTML += `<tr><td>SOL-Connect</td><td>Joy-it-Grab-it-robot02-frontend</td><td>Joy-it-Grab-it-robot02-backend</td></tr>`;
+                  projects.innerHTML += `<tr><td>portfolio</td><td>gas3</td></tr>`;
+                  projects.innerHTML += `<p>Work projects</p>`;
+                  projects.innerHTML += `<tr><td>...</td><td>...</td><td>...</td></tr>`;
+                  projects.innerHTML += `<tr><td>...</td><td>...</td><td>...</td></tr>`;
 
                   projects.style.width = "100%";
                   projects.style.color = "#60fdff";
