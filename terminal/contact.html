@@ -97,6 +97,14 @@
         }
       }
 
+      window.addEventListener('mouseup', function(event){
+	      var nav = document.getElementById('nav-menu');
+
+        if (nav && event.target != nav && event.target.parentNode != nav){
+              nav.className = "nav-menu";
+          }
+        });
+
       function closeNavMenuOnScreenWidth(windowSize) {
         var navMenu = document.getElementById("nav-menu");
   if (navMenu && !windowSize.matches) {
@@ -185,16 +193,6 @@ windowSize.addListener(closeNavMenuOnScreenWidth)
     </script>
     <div id="line-2" style="display: none">
       <p>contact@flo-dev.me</p>
-  
-      <script>
-        function calculateAge() {
-          var diff_ms = Date.now() - new Date(2003, 5, 7).getTime();
-          var age_dt = new Date(diff_ms);
-
-          return Math.abs(age_dt.getUTCFullYear() - 1970);
-        }
-        document.getElementById("age").innerHTML = "Age: " + calculateAge();
-      </script>
       <span class="terminal-text-highlighted">portfolio </span>
           <span>⚡️</span>
           <input
@@ -210,6 +208,15 @@ windowSize.addListener(closeNavMenuOnScreenWidth)
             counter = parseInt(counter);
             var inputWithCounter = `input-${counter + 1}`;
             var deactivateInput = true;
+
+            window.addEventListener('mouseup', function(event){
+                var input = document.getElementById(`input-${counter}`)
+                
+                if (input && input !== document.activeElement){
+                    input.focus();
+                  }
+                });
+
 
             document
               .getElementById(`input-${counter}`)
