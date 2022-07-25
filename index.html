@@ -8,7 +8,8 @@
     <script type="text/javascript">
       sessionStorage.setItem("counter", 0);
     </script>
-    <title>Florian Schmitz</title>
+    <title>Portfolio of Florian Schmitz</title>
+    <meta name="description" content="This is my personal terminal style website, to show my projects and skills" />
   </head>
 
   <body>
@@ -172,7 +173,7 @@
           document.getElementById("typewriter"),
           {
             loop: false,
-            delay: 100,
+            delay: 70,
           }
         );
 
@@ -192,7 +193,7 @@
             document.getElementById("typewriter-2"),
             {
               loop: false,
-              delay: 100,
+              delay: 70,
             }
           );
 
@@ -200,7 +201,7 @@
             .typeString('<span class="terminal-text-highlighted">make </span>')
             .typeString('<span class="terminal-text">portfolio</span>')
             .start();
-        }, 4000);
+        }, 3000);
 
         setTimeout(function () {
           document.getElementById("line-2").style.display = "block";
@@ -208,7 +209,7 @@
           document.getElementById("typewriter-text-2").style =
             "display: inline";
           document.getElementById("input-0").focus();
-        }, 7000);
+        }, 5000);
       </script>
 
       <div id="line-1" style="display: none">

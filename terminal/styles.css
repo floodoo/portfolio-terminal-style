@@ -17,6 +17,8 @@ body {
 
 .terminal-text-highlighted {
     color: #60FA68;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .terminal-window {
