@@ -118,9 +118,40 @@ nav {
     height: 35px;
 }
 
-.nav-button-text:after {
+.nav-menu {
+  display: none;
+}
+
+.nav-menu-active {
+  position: fixed;
+  top: 70px;
+  right: 15px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 14px;
+  padding: 10px;
+  background-color: #232222;
+  border-radius: 5px;
+  border: 1px solid #474646;
+}
+
+.nav-menu-active a {
+  color: #B5B5B5;
+  text-decoration: none;
+}
+
+#menu-home, #menu-about, #menu-projects, #menu-blog, #menu-contact {
+  display: none;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.nav-button-text:after, #menu-home:after, #menu-about:after, #menu-projects:after, #menu-blog:after, #menu-contact:after {
     content: " (-FloOS)";
     align-items: center;
+    color: #b5b5b5;
 }
 
 ul {
@@ -174,6 +205,9 @@ form {
   #contact {
     display: none;
   }
+  #menu-contact {
+    display: block;
+  }
   .nav-add-button {
     display: none;
   }
@@ -186,6 +220,9 @@ form {
   #blog {
     display: none;
   }
+  #menu-blog {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 540px) {
@@ -195,11 +232,17 @@ form {
   input {
     width: auto;
   }
+  #menu-projects {
+    display: block;
+  }
 } 
 
 @media screen and (max-width: 360px) {
   #about {
     display: none;
+  }
+  #menu-about {
+    display: block;
   }
   .terminal-window-name {
     display: none;
