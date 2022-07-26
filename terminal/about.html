@@ -300,15 +300,6 @@ windowSize.addListener(closeNavMenuOnScreenWidth)
             var inputWithCounter = `input-${counter + 1}`;
             var deactivateInput = true;
 
-            window.addEventListener('mouseup', function(event){
-                var input = document.getElementById(`input-${counter}`)
-                
-                if (input && input !== document.activeElement){
-                    input.focus();
-                  }
-                });
-
-
             document
               .getElementById(`input-${counter}`)
               .addEventListener("keydown", (e) => {

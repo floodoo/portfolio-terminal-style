@@ -87,14 +87,6 @@
         }
       }
 
-      window.addEventListener('mouseup', function(event){
-	      var nav = document.getElementById('nav-menu');
-
-        if (nav && event.target != nav && event.target.parentNode != nav){
-              nav.className = "nav-menu";
-          }
-        });
-
       function closeNavMenuOnScreenWidth(windowSize) {
         var navMenu = document.getElementById("nav-menu");
   if (navMenu && !windowSize.matches) {

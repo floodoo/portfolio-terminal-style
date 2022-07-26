@@ -197,14 +197,7 @@ windowSize.addListener(closeNavMenuOnScreenWidth)
             counter = parseInt(counter);
             var inputWithCounter = `input-${counter + 1}`;
             var deactivateInput = true;
-
-            window.addEventListener('mouseup', function(event){
-                var input = document.getElementById(`input-${counter}`)
-                
-                if (input && input !== document.activeElement){
-                    input.focus();
-                  }
-                });
+            var workProjects = ["coodoo-halbzeit", "coodoo-familydo", "	ibtc-bibkat", "gilde-einkaufsapp"];
 
             document
               .getElementById(`input-${counter}`)
@@ -281,24 +274,24 @@ windowSize.addListener(closeNavMenuOnScreenWidth)
                   "github"
                 ) {
                   var projectString = document.getElementById(`input-${counter}`).value.split(" ")[1];
+
+                  console.log(projectString);
+                  console.log(workProjects.includes(projectString));
                   
                   if (projectString === undefined) {
                     const github = document.createElement("p");
                     github.innerHTML = `<span style="color:red">Error: </span>You have to specify a project.`;
                     github.className = "terminal-text";
                     document.getElementById("line-2").appendChild(github);
-                  } else
-                  
-                  if (projectString === "missionchief") {
-                    window.open(`https://github.com/floodoo/Leitstellenspiel_Bot`, '_blank').focus();
-                    document.getElementById("line-2").appendChild(document.createElement("br"));
-                  } else
-
-                  if (projectString === "personal") {
+                  } else if (projectString === "portfolio") {
                     window.open(`https://github.com/floodoo/portfolio-terminal-style`, '_blank').focus();
                     document.getElementById("line-2").appendChild(document.createElement("br"));
+                  } if (workProjects.includes(projectString.toLowerCase())) {
+                    const error = document.createElement("p");
+                    error.innerHTML = `<span style="color:red">Error: </span>You don't have access to this project.`;
+                    error.className = "terminal-text";
+                    document.getElementById("line-2").appendChild(error);
                   } else {
-
                     window.open(`https://github.com/floodoo/${projectString.toLowerCase()}`, '_blank').focus();
                     document.getElementById("line-2").appendChild(document.createElement("br"));
                   }
@@ -308,12 +301,15 @@ windowSize.addListener(closeNavMenuOnScreenWidth)
                   document.getElementById(`input-${counter}`).value === "ls"
                 ) {
                   const projects = document.createElement("table");
-                  projects.innerHTML = `<p>Personal projects</p>`;
+                  projects.innerHTML = `<span class="terminal-text">Personal projects</span>`;
+                  projects.innerHTML += `<br>`;
                   projects.innerHTML += `<tr><td>SOL-Connect</td><td>Joy-it-Grab-it-robot02-frontend</td><td>Joy-it-Grab-it-robot02-backend</td></tr>`;
                   projects.innerHTML += `<tr><td>portfolio</td><td>gas3</td></tr>`;
-                  projects.innerHTML += `<p>Work projects</p>`;
-                  projects.innerHTML += `<tr><td>...</td><td>...</td><td>...</td></tr>`;
-                  projects.innerHTML += `<tr><td>...</td><td>...</td><td>...</td></tr>`;
+                  projects.innerHTML += `<br>`;
+                  projects.innerHTML += `<span class="terminal-text">Work projects</span>`;
+                  projects.innerHTML += `<br>`;
+                  projects.innerHTML += `<tr><td>coodoo-Halbzeit</td><td>coodoo-FamilyDo</td><td>IBTC-Bibkat</td></tr>`;
+                  projects.innerHTML += `<tr><td>Gilde-Einkaufsapp</td></tr>`;
 
                   projects.style.width = "100%";
                   projects.style.color = "#60fdff";
